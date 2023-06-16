@@ -1,0 +1,25 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Workflows for gammasim-tools - prototype implementation of
+  workflow for the simulation system of the CTA
+  Observatory
+message: Please cite this software using these metadata.
+type: software
+authors:
+  - given-names: Gernot
+    family-names: Maier
+    affiliation: DESY
+    orcid: 'https://orcid.org/0000-0001-9868-4700'
+  - given-names: Orel
+    family-names: Gueta
+    orcid: 'https://orcid.org/0000-0002-9440-2398'
+    affiliation: DESY
+  - given-names: Victor
+    family-names: Barbosa Martins
+    orcid: 'https://orcid.org/0000-0002-5085-8828'
+    affiliation: DESY
+repository-code: 'https://github.com/gammasim/workflows'
+license: BSD-3-Clause
