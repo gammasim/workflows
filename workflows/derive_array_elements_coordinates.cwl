@@ -1,22 +1,26 @@
 #!/usr/bin/env cwl-runner
-
 cwlVersion: v1.2
 class: CommandLineTool
 
 label: derive_array_elements_coordinates
 doc: |-
-    Derive coordinates of an array element in the
+    Derive coordinates of array elements in the
     simulation pipeline coordinate system.
+    This tool performs a coordinate transformation 
+    from UTM to the CORSIKA system.
 
-baseCommand: [python, /Users/maierg/Downloads/cwlsandbox/workflows/applications/print_array_elements.py]
+baseCommand:
+    - python
+    - /workdir/gammasim-tools/applications/print_array_elements.py
 
 stdout: output.txt
 
 inputs:
   data:
+    doc: |-
+        List of array elements in UTM coordinates.
     type: File
     inputBinding:
-        position: 1
         prefix: --array_element_list
 
 arguments:
@@ -24,10 +28,12 @@ arguments:
     - prefix: --export corsika
 
 outputs:
-    model_parameter:
-        type: stdout
-#        type: File
+    model_parameter: 
+        type: File
+        outputBinding:
+            glob: telescope_positions-corsika.ecsv
 
-hints:
+requirements:
   DockerRequirement:
-    dockerPull: ghcr.io/gammasim/containers/gammasim-tools-dev:v0.3.0-dev1
+    dockerPull: gammasim-tools-prod
+    dockerOutputDirectory: /workdir/simtools-output/d-2023-06-17/layout/
