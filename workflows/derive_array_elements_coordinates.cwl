@@ -23,17 +23,15 @@ inputs:
     inputBinding:
         prefix: --array_element_list
 
-arguments:
-    - prefix: --use_corsika_telescope_height
-    - prefix: --export corsika
+arguments: ["--export", "corsika", "--use_corsika_telescope_height"]
 
 outputs:
     model_parameter: 
         type: File
         outputBinding:
-            glob: telescope_positions-corsika.ecsv
+            glob: simtools-output/d-2023-06-17/layout/telescope_positions-corsika.ecsv
 
 requirements:
   DockerRequirement:
     dockerPull: gammasim-tools-prod
-    dockerOutputDirectory: /workdir/simtools-output/d-2023-06-17/layout/
+    dockerOutputDirectory: /workdir/external
