@@ -73,7 +73,7 @@ steps:
     doc: |-
         Ingest simulation model parameter(s).
         Assert using provided schema.
-    run: ./receive_parameter_from_api.cwl
+    run: ./tools/receive_parameter_from_api.cwl
     in:
       parameter: derive_array_elements_coordinates/model_parameter
       parameter_schema: schema_parameter
