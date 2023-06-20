@@ -96,8 +96,7 @@ steps:
     doc: |-
         Validation workflow for array element coordinates.
     in:
-      parameter: receive_parameter_from_api/parameter_asserted
-      input_data: receive_data_from_api/input_data_asserted
+      model_parameter: receive_parameter_from_api/parameter_asserted
     out:
       - validation_success
       - validation_data

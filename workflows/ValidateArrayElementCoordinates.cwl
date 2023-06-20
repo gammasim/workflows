@@ -17,7 +17,7 @@ inputs:
 
 outputs:
 
-  - id: validation_results
+  - id: validation_data
     doc: |-
       Plots of layouts with different array elements
       in both CORSIKA system. Used for visual inspection.
