@@ -33,7 +33,7 @@ outputs:
 # not nice! need to know the exact simtools output directory (with date!)
 # see if this can be changed on the simtools side
         outputBinding:
-            glob: simtools-output/d-2023-06-19/layout/telescope_positions-corsika.ecsv
+            glob: simtools-output/d-2023-06-20/layout/telescope_positions-corsika.ecsv
 
 # stdout are written to this file and preserved
 stdout: output.txt

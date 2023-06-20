@@ -1,14 +1,30 @@
-# Workflows for gammasim-tools
+# Workflows for simtools
 
-Workflows for gammasim-tools.
+## Introduction
 
-## Examples
+CWL implementations of simtools workflows.
 
+## Getting started
+
+Clone workflows:
 ```
-cwltool   derive_array_elements_coordinates.cwl --data telescope_positions-North-utm.ecsv
+git clone git@github.com:gammasim/workflows.git
 ```
 
-## Notes
+Install dependencies using mamba or conda:
+```
+mamba env create -f environment.yml
+conda activate simtools-workflows-dev
+```
+
+## Running examples
+
+The following command line tool converts telescope coordinates from UTM to coorsika coordinates.
+``
+cwltool methods/derive_array_elements_coordinates.cwl examples/example_derive_array_elements_coordinates.yml
+```
+
+## Graphs
 
 Prepare a workflow graph, e.g.:
 ```
