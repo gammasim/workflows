@@ -2,7 +2,10 @@
 
 ## Introduction
 
-CWL implementations of simtools workflows.
+CWL implementations of simtools workflows:
+
+- workflows for setting and validation of parameters are in [./workflows](./workflows).
+- command line tools used in these workflows and calling simtools applications are in [./workflows/tools](./workflows/tools).
 
 ## Getting started
 
