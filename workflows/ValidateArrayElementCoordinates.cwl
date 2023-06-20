@@ -20,7 +20,7 @@ outputs:
   - id: validation_results
     doc: |-
       Plots of layouts with different array elements
-      in both CORSIKA system. User for visual inspection.
+      in both CORSIKA system. Used for visual inspection.
     type: File
     outputSource: validate_array_elements_coordinates/validation_data
 
