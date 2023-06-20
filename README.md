@@ -20,8 +20,8 @@ conda activate simtools-workflows-dev
 ## Running examples
 
 The following command line tool converts telescope coordinates from UTM to coorsika coordinates.
-``
-cwltool methods/derive_array_elements_coordinates.cwl examples/example_derive_array_elements_coordinates.yml
+```
+cwltool tools/derive_array_elements_coordinates.cwl examples/example_derive_array_elements_coordinates.yml
 ```
 
 ## CWL validation
