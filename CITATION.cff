@@ -3,7 +3,7 @@
 
 cff-version: 1.2.0
 title: >-
-  Workflows for gammasim-tools - prototype implementation of
+  Workflows for simtools - prototype implementation of
   workflow for the simulation system of the CTA
   Observatory
 message: Please cite this software using these metadata.
