@@ -23,8 +23,6 @@ inputs:
     inputBinding:
         prefix: --array_element_list
 
-# command line arguments - each of them as individual strings
-# ("--export corsika" will fail)
 arguments: ["--export", "corsika", "--use_corsika_telescope_height"]
 
 outputs:
