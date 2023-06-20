@@ -12,7 +12,7 @@ inputs:
   - id: input_data
     type: File
     doc: |-
-      Coordinates of array elements in UTMS system.
+      Coordinates of array elements in UTM system.
   - id: schema_array_elements
     type: File
     doc: |-
@@ -82,7 +82,7 @@ steps:
 
   - id: update_model_parameter_to_database
     doc: |-
-        Write asserted and validated model paramter(s) to 
+        Write asserted and validated model parameter(s) to 
         simulation model database.
     run: ./tools/update_database.cwl
     in:
