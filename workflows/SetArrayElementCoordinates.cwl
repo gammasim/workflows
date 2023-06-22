@@ -13,10 +13,12 @@ inputs:
     type: File
     doc: |-
       Coordinates of array elements in UTM system.
+
   - id: schema_array_elements
     type: File
     doc: |-
       Schema file for definition of array elements data.
+
   - id: schema_parameter
     type: File
     doc: |-
