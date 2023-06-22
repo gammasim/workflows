@@ -19,12 +19,12 @@ inputs:
     - id: validate_array_elements_coordinates_data
       doc: |-
         Validation data from validate_array_elements_coordinates.
-      type: File
+      type: File?
 
     - id: validate_dummy_data
       doc: |-
         Validation data from validate_dummy.
-      type: File
+      type: File?
 
 outputs:
 

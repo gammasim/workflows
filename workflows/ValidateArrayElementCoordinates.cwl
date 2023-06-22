@@ -14,44 +14,31 @@ inputs:
     type: File
     doc: |-
       Coordinates of array elements in CORSIKA system.
+# Missing: any data needed for validation
 
 outputs:
 
-  - id: validation_data
-    doc: |-
-      Plots of layouts with different array elements
-      in both CORSIKA system. Used for visual inspection.
-    type: File
-    outputSource: validate_array_elements_coordinates/validation_data
-
-  - id: validation_success
-    doc: |-
-      Validation statement.
-    type: string
-    outputSource: review_validation/validation_success
+    - id: validation_report
+      doc: |-
+        Report on validation processes.
+      type: File
+      outputSource: generate_validation_report/validation_report
 
 steps:
 
-  - id: validate_array_elements_coordinates
-    doc: |-
-        Validation workflow.
-    run:
-        ./tools/validate_array_elements_coordinates.cwl
-    in:
-        data: model_parameter
-    out: 
-        - validation_data
+    - id: validate_array_elements_coordinates
+      doc: |-
+        Validate array elements coordinates.
+      run: ./tools/validate_array_elements_coordinates.cwl
+      in:
+          data: model_parameter
+      out: [validation_data]
 
-  - id: review_validation
-    doc: |-
-        Validation review.
-    run: 
-        ./tools/review_validation.cwl
-    in: 
-        validation_data: validate_array_elements_coordinates/validation_data
-    out: 
-        - validation_success
-
-requirements:
-  SubworkflowFeatureRequirement: {}
-  InlineJavascriptRequirement: {}
+    - id: generate_validation_report
+      doc: |-
+        Generation validation report from the data produced
+        by validation of array element coordinates.
+      run: ./tools/generate_validation_report.cwl
+      in:
+        validate_array_elements_coordinates_data: validate_array_elements_coordinates/validation_data
+      out: [validation_report]

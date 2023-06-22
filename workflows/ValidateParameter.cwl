@@ -23,8 +23,7 @@ outputs:
       doc: |-
         Report on validation processes.
       type: File
-      outputSource:
-          - generate_validation_report/validation_report
+      outputSource: generate_validation_report/validation_report
 
 steps:
 
