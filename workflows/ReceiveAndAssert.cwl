@@ -36,7 +36,7 @@ outputs:
 
   - id: return_code
     type: string
-    outputSource: archive_data/return_code
+    outputSource: assert_data/return_code
 
 steps:
 
@@ -59,6 +59,8 @@ steps:
     run: ./tools/archive_data.cwl
     in:
       data: assert_data/data_asserted
+      assert_return_code: assert_data/return_code
+    when: $(inputs.assert_return_code == 'SUCCESS' )
     out:
       - return_code
 
