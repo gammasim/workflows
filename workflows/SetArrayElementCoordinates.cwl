@@ -46,7 +46,7 @@ steps:
     run: ./ReceiveAndAssert.cwl
     in:
       input: input_data
-      data_schema: schema_array_elements
+      schema: schema_array_elements
     out:
       - data_asserted
       - return_code
@@ -63,13 +63,13 @@ steps:
 
   - id: ValidateArrayElementCoordinates
     doc: |-
-        Validate derived coordiantes.
+        Validate derived coordinates.
     run:
       ./ValidateArrayElementCoordinates.cwl
     in:
       model_parameter: DeriveArrayElementCoordinates/parameter_derived
     out:
-      - model_parameter
+      - validation_report
 # TODO      - return_code
 
   - id: AcceptParameter

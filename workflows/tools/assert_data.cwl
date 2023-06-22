@@ -29,6 +29,9 @@ outputs:
     - id: data_asserted
       type: File
 
+    - id: return_code
+      type: string
+
 # stdout are written to this file and preserved
 stdout: output.txt
 

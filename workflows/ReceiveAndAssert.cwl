@@ -34,7 +34,7 @@ outputs:
     type: File
     outputSource: assert_data/data_asserted
 
-  - id: archive_asserted_data_return_code
+  - id: return_code
     type: string
     outputSource: archive_data/return_code
 
