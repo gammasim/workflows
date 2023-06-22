@@ -15,17 +15,17 @@ baseCommand:
 
 inputs:
 
-  - id: data
-    doc: |-
-      List of array elements in simulation system coordinates.
-    type: File
+    - id: data
+      doc: |-
+        List of array elements in simulation system coordinates.
+      type: File
 
 arguments: ["--h"]
 
 outputs:
 
   - id: validation_data
-    type: File[]
+    type: File
 
 # stdout are written to this file and preserved
 stdout: output.txt
