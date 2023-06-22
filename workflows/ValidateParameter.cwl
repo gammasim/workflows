@@ -54,3 +54,12 @@ steps:
         validate_array_elements_coordinates_data: validate_array_elements_coordinates/validation_data
         validate_dummy_data: validate_dummy/validation_data
       out: [validation_report]
+
+    - id: archive_validation_report
+      doc: |-
+        Archive validation report 
+      run: ./tools/archive_data.cwl
+      in:
+         data: generate_validation_report/validation_report
+      out: 
+        - return_code

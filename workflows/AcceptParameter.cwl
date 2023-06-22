@@ -28,10 +28,6 @@ outputs:
     type: string
     outputSource: review_validation/acceptance_statement
 
-  - id: model_database_return_code
-    type: string
-    outputSource: update_model_database/return_code
-
 steps:
 
   - id: review_validation

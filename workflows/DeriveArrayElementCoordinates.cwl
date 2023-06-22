@@ -14,15 +14,20 @@ inputs:
     doc: |- 
         Input data.
 
+  - id: schema_parameter
+    type: File
+    doc: |-
+        Schema descripting model parameters.
+
 outputs:
 
   - id: parameter_derived
     type: File
-    outputSource: derive_array_elements_coordinates/model_parameter
+    outputSource: assert_model_parameter/data_asserted
 
   - id: return_code
     type: string
-    outputSource: archive_data/return_code
+    outputSource: assert_model_parameter/return_code
 
 steps:
 
@@ -39,7 +44,16 @@ steps:
       - derivation_data
       - return_code
 
-# TODO - handle return codes / error codes / skip
+  - id: assert_model_parameter
+    doc: |-
+        Assert derived model parameter using a known schema.
+    run: ./tools/assert_data.cwl
+    in:
+        input: derive_array_elements_coordinates/model_parameter
+        schema: schema_parameter
+    out:
+        - data_asserted
+        - return_code
 
   - id: archive_data
     doc: |-
@@ -47,6 +61,8 @@ steps:
     run: ./tools/archive_data.cwl
     in:
       data: derive_array_elements_coordinates/derivation_data
+      assert_return_code: assert_model_parameter/return_code
+    when: $(inputs.assert_return_code == 'SUCESS')
     out:
       - return_code
 

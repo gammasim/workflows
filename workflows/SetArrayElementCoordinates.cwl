@@ -57,6 +57,7 @@ steps:
     run: ./DeriveArrayElementCoordinates.cwl
     in:
       input: ReceiveAndAssert/data_asserted
+      schema_parameter: schema_parameter
     out:
       - parameter_derived
       - return_code
