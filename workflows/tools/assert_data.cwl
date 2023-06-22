@@ -2,7 +2,7 @@
 cwlVersion: v1.2
 class: CommandLineTool
 
-label: receive_data_from_api
+label: assert_data
 doc: |-
     Receive data through an API to be used in a derivation or
     validation workflow.  Input data is validated using a

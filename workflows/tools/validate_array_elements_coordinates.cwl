@@ -10,7 +10,8 @@ doc: |-
     Plot distance distributions between telescopes.
 
 baseCommand:
-  - echo
+  - python
+  - /workdir/gammasim-tools/applications/print_array_elements.py
 
 inputs:
 
@@ -19,10 +20,12 @@ inputs:
       List of array elements in simulation system coordinates.
     type: File
 
+arguments: ["--h"]
+
 outputs:
 
   - id: validation_data
-    type: File
+    type: File[]
 
 # stdout are written to this file and preserved
 stdout: output.txt
