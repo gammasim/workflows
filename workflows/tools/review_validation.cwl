@@ -4,31 +4,30 @@ class: CommandLineTool
 
 label: review_validation
 doc: |-
-    Review validation results.
+    Review validation report.
+    DEVELOPERNOTE - requires a bit of thinking how
+    this is actually done (automatically / manually)
 
 baseCommand:
   - echo
 
-# TODO - replace dummy output
 arguments:
   - "false"
 
 inputs:
 
-  - id: validation_data
-    doc: |-
-        Validation data to be reviewed.
-    type: File
+    - id: validation_report
+      doc: |-
+        Report issued by validation workflow(s).
+      type: File
 
 outputs:
 
-  - id: validation_success
-    type: string
+    - id: acceptance_statement
+      doc: |-
+        Acceptance statement.
+        DEVELOPERNOTE - is this simply a keyword like
+        accepted / not_accepted or more extensive?
+      type: string
 
-# stdout are written to this file and preserved
 stdout: output.txt
-
-requirements:
-  DockerRequirement:
-    dockerPull: ghcr.io/gammasim/gammasim-tools-prod:latest
-    dockerOutputDirectory: /workdir/external
