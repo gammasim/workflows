@@ -27,7 +27,7 @@ outputs:
   - id: validation_success
     doc: |-
       Validation statement.
-    type: boolean
+    type: string
     outputSource: review_validation/validation_success
 
 steps:
