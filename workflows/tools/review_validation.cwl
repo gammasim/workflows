@@ -9,6 +9,10 @@ doc: |-
 baseCommand:
   - echo
 
+# TODO - replace dummy output
+arguments:
+  - "false"
+
 inputs:
 
   - id: validation_data
@@ -19,7 +23,7 @@ inputs:
 outputs:
 
   - id: validation_success
-    type: boolean
+    type: string
 
 # stdout are written to this file and preserved
 stdout: output.txt
