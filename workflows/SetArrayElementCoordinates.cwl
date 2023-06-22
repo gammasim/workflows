@@ -24,92 +24,64 @@ inputs:
     doc: |-
       Schema file for definition of simulation model data.
 
-outputs:
+outputs: []
 
-  - id: parameter_asserted
-    type: File
-    outputSource: receive_parameter_from_api/parameter_asserted
-
-  - id: receive_data_db_success
-    type: boolean
-    outputSource: update_receive_data_to_database/db_success
-
-  - id: validation_data_db_success
-    type: boolean
-    outputSource: update_validation_data_to_database/db_success
+#  - id: parameter_asserted
+#    type: File
+#    outputSource: receive_parameter_from_api/parameter_asserted
+#
+#  - id: receive_data_db_success
+#    type: boolean
+#    outputSource: update_receive_data_to_database/db_success
+#
+#  - id: validation_data_db_success
+#    type: boolean
+#    outputSource: update_validation_data_to_database/db_success
 
 steps:
 
-  - id: receive_data_from_api
+  - id: ReceiveAndAssert
     doc: |-
-        Receive data through API.
-        Assert data using provided schema.
-    run: ./tools/receive_data_from_api.cwl
+        Receive and assert data.
+    run: ./ReceiveAndAssert.cwl
     in:
-      data: input_data
+      input: input_data
       data_schema: schema_array_elements
     out:
-      - input_data_asserted
+      - data_asserted
+      - return_code
 
-  - id: update_receive_data_to_database
+  - id: DeriveArrayElementCoordinates
     doc: |-
-        Write received data to corresponding database.
-    run: ./tools/update_database.cwl
+        Derive array element coordinates.
+    run: ./DeriveArrayElementCoordinates.cwl
     in:
-      data: receive_data_from_api/input_data_asserted
+      input: ReceiveAndAssert/data_asserted
     out:
-      - db_success
+      - parameter_derived
+      - return_code
 
-  - id: derive_array_elements_coordinates
+  - id: ValidateArrayElementCoordinates
     doc: |-
-        Transform coordinates to system used
-        by simulation system.
+        Validate derived coordiantes.
     run:
-      ./tools/derive_array_elements_coordinates.cwl
+      ./ValidateArrayElementCoordinates.cwl
     in:
-      data: receive_data_from_api/input_data_asserted
+      model_parameter: DeriveArrayElementCoordinates/parameter_derived
     out:
       - model_parameter
+# TODO      - return_code
 
-  - id: receive_parameter_from_api
+  - id: AcceptParameter
     doc: |-
-        Ingest simulation model parameter(s).
-        Assert using provided schema.
-    run: ./tools/receive_parameter_from_api.cwl
+        Accept and save parameter.
+    run: ./AcceptParameter.cwl
     in:
-      parameter: derive_array_elements_coordinates/model_parameter
-      parameter_schema: schema_parameter
+      model_parameter:  DeriveArrayElementCoordinates/parameter_derived
+      validation_report: ValidateArrayElementCoordinates/validation_report
     out:
-      - parameter_asserted
-
-  - id: update_model_parameter_to_database
-    doc: |-
-        Write asserted and validated model parameter(s) to 
-        simulation model database.
-    run: ./tools/update_database.cwl
-    in:
-      data: receive_parameter_from_api/parameter_asserted
-    out:
-      - db_success
-    when: $(self.validation.validation_success)
-
-  - id: validation
-    run: ./ValidateArrayElementCoordinates.cwl
-    doc: |-
-        Validation workflow for array element coordinates.
-    in:
-      model_parameter: receive_parameter_from_api/parameter_asserted
-    out:
-      - validation_success
-      - validation_data
-
-  - id: update_validation_data_to_database
-    run: ./tools/update_database.cwl
-    in:
-      data: validation/validation_data
-    out:
-      - db_success
-    when: $(self.validation.validation_success)
+      - acceptance_statement
+#      - model_database_return_code
 
 requirements:
   SubworkflowFeatureRequirement: {}

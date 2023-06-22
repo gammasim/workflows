@@ -49,6 +49,9 @@ steps:
       schema: schema
     out:
       - data_asserted
+      - return_code
+
+# TODO - handle return codes / error codes / skip
 
   - id: archive_data
     doc: |-

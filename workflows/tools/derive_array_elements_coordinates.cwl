@@ -16,22 +16,37 @@ baseCommand:
     - /workdir/gammasim-tools/applications/print_array_elements.py
 
 inputs:
-  data:
-    doc: |-
+
+    - id: data
+      doc: |-
         List of array elements in UTM coordinates.
-    type: File
-    inputBinding:
-        prefix: --array_element_list
+      type: File
+      inputBinding:
+          prefix: --array_element_list
 
 arguments: ["--export", "corsika", "--use_corsika_telescope_height"]
 
 outputs:
-    model_parameter: 
-        type: File
+
+    - id: model_parameter
+      type: File
 # not nice! need to know the exact simtools output directory (with date!)
 # see if this can be changed on the simtools side
-        outputBinding:
-            glob: simtools-output/d-2023-06-20/layout/telescope_positions-corsika.ecsv
+      outputBinding:
+        glob: simtools-output/d-2023-06-20/layout/telescope_positions-corsika.ecsv
+
+    - id: derivation_data
+      doc: |-
+        Additional data from derivation workflow
+        DEVELOPERNOTE - not clear if this is required for all workflows
+      type: File
+
+    - id: return_code
+      doc: |-
+        Return code of derivation process.
+      type: string
+
+        
 
 # stdout are written to this file and preserved
 stdout: output.txt
