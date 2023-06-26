@@ -62,7 +62,7 @@ steps:
     in:
       data: derive_array_elements_coordinates/derivation_data
       assert_return_code: assert_model_parameter/return_code
-    when: $(inputs.assert_return_code == 'SUCESS')
+    when: $(inputs.assert_return_code == 'SUCCESS')
     out:
       - return_code
 
