@@ -6,7 +6,7 @@ label: ReceiveAndAssert
 doc: |- 
     Receive simulation model parameter update or data to derive
     simulation model parameter(s) (e.g., by querying a database
-    or triggered by an interface input). Assert ingest using
+    or triggered by an interface input). Assert input using
     a pre-defined schema describing the required input data.
     DEVELOPERNOTE - missing step of metadata enrichment?
 
