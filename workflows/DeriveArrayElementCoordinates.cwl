@@ -17,7 +17,7 @@ inputs:
   - id: schema_parameter
     type: File
     doc: |-
-        Schema descripting model parameters.
+        Schema describing model parameters.
 
 outputs:
 
