@@ -1,0 +1,15 @@
+# A conda environment with all useful package for simtools workflow developers
+name: simtools-workflows-dev
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - cwltool
+  - jsonschema
+  - ruamel.yaml
+  - yamllint
+
+# cheatsheet
+# create: mamba env create -f environment.yml
+# activate: mamba activate simtools-workflows-dev
+# update: mamba env update -f environment.yml --prune
