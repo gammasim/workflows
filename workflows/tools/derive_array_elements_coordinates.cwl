@@ -31,11 +31,11 @@ outputs:
       outputBinding:
         glob: simtools-output/d-2023-07-06/layout/telescope_positions-corsika.ecsv
 
-#    - id: derivation_data
-#      doc: |-
-#        Additional data from derivation workflow
-#        DEVELOPERNOTE - not clear if this is required for all workflows
-#      type: File
+    - id: derivation_data
+      doc: |-
+        Additional data from derivation workflow
+        DEVELOPERNOTE - not clear if this is required for all workflows
+      type: File
 
     - id: return_code
       doc: |-
