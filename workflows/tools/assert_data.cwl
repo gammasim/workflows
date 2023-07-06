@@ -37,5 +37,5 @@ stdout: output.txt
 
 requirements:
   DockerRequirement:
-    dockerPull: ghcr.io/gammasim/gammasim-tools-prod:latest
+    dockerPull: ghcr.io/gammasim/simtools-prod:latest
     dockerOutputDirectory: /workdir/external
