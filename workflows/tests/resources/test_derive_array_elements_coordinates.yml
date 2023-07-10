@@ -1,0 +1,8 @@
+---
+input:
+  class: File
+  location:
+    https://raw.githubusercontent.com/gammasim/simtools/main/tests/resources/telescope_positions-North-utm.ecsv
+schema_parameter:
+  class: File
+  path: example_derive_array_elements_coordinates.yml
