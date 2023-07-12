@@ -29,23 +29,17 @@ outputs:
 # not nice! need to know the exact simtools output directory (with date!)
 # see if this can be changed on the simtools side
       outputBinding:
-        glob: simtools-output/d-2023-07-06/layout/telescope_positions-corsika.ecsv
+        glob: simtools-output/d-2023-07-11/layout/telescope_positions-corsika.ecsv
 
-#    - id: derivation_data
-#      doc: |-
-#        Additional data from derivation workflow
-#        DEVELOPERNOTE - not clear if this is required for all workflows
-#      type: File
-
-    - id: return_code
+    - id: derivation_data
       doc: |-
-        Return code of derivation process.
-      type: string
+        Additional data or logging output from this tool.
+      type: stdout
 
-# stdout are written to this file and preserved
-stdout: output.txt
+stdout: derivation_data.log
 
 requirements:
+  InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
     dockerOutputDirectory: /workdir/external
