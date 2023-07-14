@@ -22,7 +22,7 @@ inputs:
 
 arguments: [
     "--export", "corsika", "--use_corsika_telescope_height",
-    "--output_path", ".", "--use_plain_output_path"
+    "--output_path", "$(runtime.tmpdir)", "--use_plain_output_path"
     ]
 
 outputs:
@@ -30,16 +30,23 @@ outputs:
     - id: model_parameter
       type: File
       outputBinding:
-        glob: ./telescope_positions-corsika.ecsv
+        glob: "telescope_positions-corsika.ecsv"
 
     - id: derivation_data
       doc: |-
         Additional data or logging output from this tool.
-      type: stdout
+      type: File
+      outputBinding:
+        glob: "derivation_data.log"
 
 stdout: derivation_data.log
+stderr: derivation_data.log
 
 requirements:
+  InitialWorkDirRequirement:
+    listing:
+        - entryname: telescope_positions-corsika.ecsv
+          entry: "$(runtime.tmpdir)/telescope_positions-corsika.ecsv"
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
