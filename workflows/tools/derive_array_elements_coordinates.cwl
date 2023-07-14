@@ -20,16 +20,17 @@ inputs:
       inputBinding:
           prefix: --array_element_list
 
-arguments: ["--export", "corsika", "--use_corsika_telescope_height"]
+arguments: [
+    "--export", "corsika", "--use_corsika_telescope_height",
+    "--output_path", ".", "--use_plain_output_path"
+    ]
 
 outputs:
 
     - id: model_parameter
       type: File
-# not nice! need to know the exact simtools output directory (with date!)
-# see if this can be changed on the simtools side
       outputBinding:
-        glob: simtools-output/d-2023-07-11/layout/telescope_positions-corsika.ecsv
+        glob: ./telescope_positions-corsika.ecsv
 
     - id: derivation_data
       doc: |-
