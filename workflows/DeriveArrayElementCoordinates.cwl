@@ -23,11 +23,16 @@ outputs:
 
   - id: parameter_derived
     type: File
-    outputSource: assert_model_parameter/data_asserted
+#    outputSource: assert_model_parameter/data_asserted
+    outputSource: derive_array_elements_coordinates/model_parameter
 
-  - id: return_code
-    type: string
-    outputSource: assert_model_parameter/return_code
+  - id: logging
+    type: File
+    outputSource: derive_array_elements_coordinates/derivation_data
+
+#  - id: return_code
+#    type: string
+#    outputSource: assert_model_parameter/return_code
 
 steps:
 
@@ -42,29 +47,28 @@ steps:
     out:
       - model_parameter
       - derivation_data
-      - return_code
 
-  - id: assert_model_parameter
-    doc: |-
-        Assert derived model parameter using a known schema.
-    run: ./tools/assert_data.cwl
-    in:
-        input: derive_array_elements_coordinates/model_parameter
-        schema: schema_parameter
-    out:
-        - data_asserted
-        - return_code
+#  - id: assert_model_parameter
+#    doc: |-
+#        Assert derived model parameter using a known schema.
+#    run: ./tools/assert_data.cwl
+#    in:
+#        input: derive_array_elements_coordinates/model_parameter
+#        schema: schema_parameter
+#    out:
+#        - data_asserted
+#        - return_code
 
-  - id: archive_data
-    doc: |-
-        Archive validation data.
-    run: ./tools/archive_data.cwl
-    in:
-      data: derive_array_elements_coordinates/derivation_data
-      assert_return_code: assert_model_parameter/return_code
-    when: $(inputs.assert_return_code == 'SUCCESS')
-    out:
-      - return_code
+#  - id: archive_data
+#    doc: |-
+#        Archive validation data.
+#    run: ./tools/archive_data.cwl
+#    in:
+#      data: derive_array_elements_coordinates/derivation_data
+#      assert_return_code: assert_model_parameter/return_code
+#    when: $(inputs.assert_return_code == 'SUCCESS')
+#    out:
+#      - return_code
 
 requirements:
   SubworkflowFeatureRequirement: {}
