@@ -22,7 +22,7 @@ inputs:
 
 arguments: [
     "--export", "corsika", "--use_corsika_telescope_height",
-    "--output_path", "$(runtime.tmpdir)", "--use_plain_output_path"
+    "--output_path", "simtools-output", "--use_plain_output_path"
     ]
 
 outputs:
@@ -30,7 +30,7 @@ outputs:
     - id: model_parameter
       type: File
       outputBinding:
-        glob: "telescope_positions-corsika.ecsv"
+        glob: "simtools-output/telescope_positions-corsika.ecsv"
 
     - id: derivation_data
       doc: |-
@@ -50,4 +50,3 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
-    dockerOutputDirectory: /workdir/external
