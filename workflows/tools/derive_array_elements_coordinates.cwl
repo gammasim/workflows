@@ -34,6 +34,12 @@ outputs:
 
     - id: derivation_data
       doc: |-
+        Additional data from derivation workflow
+        DEVELOPERNOTE - not clear if this is required for all workflows
+      type: File
+
+    - id: return_code
+      doc: |-
         Additional data or logging output from this tool.
       type: File
       outputBinding:
