@@ -14,7 +14,7 @@ baseCommand:
 
 inputs:
 
-    - id: input
+    - id: data
       doc: |- 
         Input data or model parameter.
       type: File
@@ -29,13 +29,15 @@ outputs:
     - id: data_asserted
       type: File
 
-    - id: return_code
-      type: string
+    - id: assertion_data
+      doc: |-
+        Additional data or logging output from this tool.
+      type: stdout
 
-# stdout are written to this file and preserved
-stdout: output.txt
+stdout: assertion_data.log
 
 requirements:
+  InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
     dockerOutputDirectory: /workdir/external
