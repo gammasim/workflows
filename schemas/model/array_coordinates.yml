@@ -1,0 +1,58 @@
+---
+# Follows schema ../reference_schema/parameters-jsonschema.yml
+title: Model parameter schema description
+description: |-
+  Model parameter schema description
+name: simpipe-schema
+version: 0.1.0
+
+schema:
+
+  - name: array_coordinates
+    description: |-
+      Telescope positions.
+    data:
+      - type: datatable
+        table_columns:
+          - name: position_x
+            description: |-
+              telescope x position towards geographic North
+              (relative to the centre of the array).
+            type: double
+            required: true
+            units: m
+          - name: position_y
+            description: |-
+              telescope y position towards geographic West
+              (relative to the centre of the array).
+            type: double
+            required: true
+            units: m
+          - name: position_z
+            description: |-
+              telescope z position
+              (relative to site centre `altitude`).
+            type: double
+            required: true
+            units: m
+            allowed_range:
+              min: 0.
+    activity:
+      setting:
+        - SetParameterFromExternal
+        - SetArrayElementCoordinates
+      validation:
+        - ValidateParameterByExpert
+        - ValidateArrayElementCoordinates
+    source:
+      - Initial instrument setup
+    instrument:
+      class: Site
+      type:
+        - Observatory
+      site:
+        - North
+        - South
+    simulation_software:
+      - name: corsika
+...
