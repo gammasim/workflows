@@ -212,6 +212,7 @@ definitions:
           enum:
             - remove_duplicates
             - sort
+            - allow_nan
       table_columns:
         type: array
         items:
