@@ -26,10 +26,11 @@ jobs:
         run: |
           pip install cwltool yamllint
 
-      - name: Lint CWL files
-        run: |
-          find ./workflows -name "*.cwl" -print0 | xargs -0 -I {} cwltool --validate {}
-
       - name: Lint yml files
         run: |
           find ./ -name "*.yml" -print0 | xargs -0 -I {} yamllint {}
+
+      - name: Lint CWL files
+        run: |
+          find ./workflows -name "*.cwl" -print0 | xargs -0 -I {} cwltool --validate {}
+---
