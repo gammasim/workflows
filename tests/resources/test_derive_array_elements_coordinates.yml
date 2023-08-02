@@ -3,6 +3,7 @@ input:
   class: File
   location:
     https://raw.githubusercontent.com/gammasim/simtools/main/tests/resources/telescope_positions-North-utm.ecsv
-schema_parameter:
+schema:
   class: File
-  path: example_derive_array_elements_coordinates.yml
+  location:
+    https://raw.githubusercontent.com/gammasim/workflows/prototype-DeriveArrayElementCoordinates/schemas/array_coordinates.schema.yml
