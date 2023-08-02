@@ -5,6 +5,5 @@ This directory contains a descriptions of all simulation model parameters and of
 The files are in [json-schema](https://json-schema.org/) and include (among others) name, type, format, applicable telescopes, and parameter description.
 
 Files and directories:
-- [model/](./model/): reference schema for all model parameters (one file per parameter)
-- [input/](./input/): reference schema for all input data required by the derivation tools
-- [jsonschema.yml](./jsonschema.yml): json schema for validation of all schema files 
+- [schema/](./): reference schemas for all model parameters (one file per parameter) and input data required by the derivation tools
+- [schema/jsonschema.yml](./jsonschema.yml): json schema for validation of all schema files 
