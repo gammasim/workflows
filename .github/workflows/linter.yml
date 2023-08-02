@@ -33,4 +33,3 @@ jobs:
       - name: Lint CWL files
         run: |
           find ./workflows -name "*.cwl" -print0 | xargs -0 -I {} cwltool --validate {}
----
