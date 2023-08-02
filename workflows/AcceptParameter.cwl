@@ -33,11 +33,11 @@ steps:
   - id: review_validation
     doc: |-
         Validation review.
-    run: 
+    run:
         ./tools/review_validation.cwl
-    in: 
+    in:
         validation_report: validation_report
-    out: 
+    out:
         - acceptance_statement
 
   - id: update_model_database
@@ -49,5 +49,5 @@ steps:
         ./tools/update_model_database.cwl
     in:
         data: model_parameter
-    out: 
+    out:
         - return_code

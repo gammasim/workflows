@@ -6,7 +6,7 @@ label: derive_array_elements_coordinates
 doc: |-
     Derive coordinates of array elements in the
     simulation pipeline coordinate system.
-    This tool performs a coordinate transformation 
+    This tool performs a coordinate transformation
     from UTM to the CORSIKA system.
 
 baseCommand: [simtools-print-array-elements]
@@ -44,10 +44,6 @@ stdout: derivation_data.log
 stderr: derivation_data.log
 
 requirements:
-  InitialWorkDirRequirement:
-    listing:
-        - entryname: telescope_positions-corsika.ecsv
-          entry: "$(runtime.tmpdir)/telescope_positions-corsika.ecsv"
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: simtools-prod

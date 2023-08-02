@@ -13,7 +13,7 @@ inputs:
     type: File
     doc: |-
       Updated simulation model parameter(s)
-      
+
 
   - id: schema_parameter
     type: File

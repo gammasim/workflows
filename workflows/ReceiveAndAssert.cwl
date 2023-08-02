@@ -3,7 +3,7 @@ cwlVersion: v1.2
 class: Workflow
 
 label: ReceiveAndAssert
-doc: |- 
+doc: |-
     Receive simulation model parameter update or data to derive
     simulation model parameter(s) (e.g., by querying a database
     or triggered by an interface input). Assert input using
@@ -14,7 +14,7 @@ inputs:
 
   - id: input
     type: File
-    doc: |- 
+    doc: |-
         Input data or model parameter.
         DEVELOPERNOTE - any input is considered to be a file, even if it
         is a single number.

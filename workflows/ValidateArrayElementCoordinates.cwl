@@ -45,9 +45,9 @@ steps:
 
     - id: archive_validation_report
       doc: |-
-        Archive validation report 
+        Archive validation report
       run: ./tools/archive_data.cwl
       in:
          data: generate_validation_report/validation_report
-      out: 
+      out:
         - return_code
