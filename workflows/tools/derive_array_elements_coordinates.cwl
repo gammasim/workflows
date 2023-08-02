@@ -22,7 +22,8 @@ inputs:
 
 arguments: [
     "--export", "corsika", "--use_corsika_telescope_height",
-    "--output_path", "simtools-output", "--use_plain_output_path"
+    "--output_path", "simtools-output", "--use_plain_output_path",
+    "--select_assets", "LSTN", "MSTN", "LSTS", "MSTS", "SSTS"
     ]
 
 outputs:
@@ -49,4 +50,5 @@ requirements:
           entry: "$(runtime.tmpdir)/telescope_positions-corsika.ecsv"
   InlineJavascriptRequirement: {}
   DockerRequirement:
-    dockerPull: ghcr.io/gammasim/simtools-prod:latest
+    dockerPull: simtools-prod
+#    dockerPull: ghcr.io/gammasim/simtools-prod:latest
