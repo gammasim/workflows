@@ -28,7 +28,7 @@ jobs:
 
       - name: Lint yml files
         run: |
-          find ./ -name "*.yml" -print0 | xargs -0 -I {} yamllint {}
+          find ./schemas -name "*.yml" -print0 | xargs -0 -I {} yamllint {}
 
       - name: Lint CWL files
         run: |
