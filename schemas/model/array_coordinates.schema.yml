@@ -1,5 +1,5 @@
 ---
-# Follows schema ../reference_schema/parameters-jsonschema.yml
+# Follows schema https://github.com/gammasim/workflows/schema/jsonschema.yml
 title: Model parameter schema description
 description: |-
   Model parameter schema description
@@ -14,21 +14,21 @@ schema:
     data:
       - type: datatable
         table_columns:
-          - name: position_x
+          - name: pos_x
             description: |-
               telescope x position towards geographic North
               (relative to the centre of the array).
             type: double
             required: true
             units: m
-          - name: position_y
+          - name: pos_y
             description: |-
               telescope y position towards geographic West
               (relative to the centre of the array).
             type: double
             required: true
             units: m
-          - name: position_z
+          - name: pos_z
             description: |-
               telescope z position
               (relative to site centre `altitude`).
