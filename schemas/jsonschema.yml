@@ -13,24 +13,28 @@ definitions:
     type: object
     additionalProperties: false
     properties:
-      parameter_list:
+      title:
+        type: string
+      description:
+        type: string
+      name:
+        type: string
+      version:
+        type: string
+      schema:
         type: array
         items:
           $ref: '#/definitions/Parameterlist'
     required:
-      - parameter_list
+      - schema
     title: SimulationModelParameters
   Parameterlist:
     type: object
     additionalProperties: false
     required:
-      - activity
       - data
       - description
-      - instrument
       - name
-      - simulation_software
-      - source
     properties:
       name:
         type: string
