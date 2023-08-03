@@ -15,6 +15,6 @@ schema:
   class: File
   description: |-
     Schema describing output data
-    (this should be known by the workflow and does not need to be provided)
+    (this should be known by the workflow and probably does not need to be provided in future).
   location:
     https://raw.githubusercontent.com/gammasim/workflows/prototype-DeriveArrayElementCoordinates/schemas/array_coordinates.schema.yml

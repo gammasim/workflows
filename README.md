@@ -6,6 +6,7 @@ CWL implementations of simtools workflows:
 
 - workflows for setting and validation of parameters are in [./workflows](./workflows).
 - command line tools used in these workflows and calling simtools applications are in [./workflows/tools](./workflows/tools).
+- input and generated data is validated using schemas located in [./schemas](./schemas).
 
 ## Getting started
 
@@ -24,8 +25,14 @@ conda activate simtools-workflows-dev
 
 The following command line tool converts telescope coordinates from UTM to CORSIKA coordinates.
 ```
-cwltool tools/derive_array_elements_coordinates.cwl examples/example_derive_array_elements_coordinates.yml
+cwltool DeriveArrayElementCoordinates.cwl ../tests/resources/test_derive_array_elements_coordinates.yml
 ```
+The workflow steps are:
+- assert input data
+- convert coordinates
+- assert derive parameter values
+
+(see the log files produced)
 
 ## CWL validation
 
@@ -35,7 +42,7 @@ Use `cwltool --validate file_name.cwl` to check a workflow or command line tool 
 
 Prepare a workflow graph, e.g.:
 ```
-cwltool --print-dot ValidateArrayElementCoordinates.cwl | dot -Tsvg > ValidateArrayElementCoordinates.svg
+cwltool --print-dot DeriveArrayElementCoordinates.cwl | dot -Tsvg > DeriveArrayElementCoordinates.cwl.svg
 ```
 
-Alternatively, use https://view.commonwl.org/ , e.g., see [this example](https://view.commonwl.org/workflows/github.com/gammasim/workflows/blob/first-example/workflows/SetArrayElementCoordinates.cwl).
+Alternatively, use https://view.commonwl.org/ , e.g., see [this example](https://view.commonwl.org/workflows/github.com/gammasim/workflows/blob/prototype-DeriveArrayElementCoordinates/workflows/DeriveArrayElementCoordinates.cwl).
