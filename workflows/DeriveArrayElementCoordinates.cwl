@@ -26,19 +26,27 @@ inputs:
 
 outputs:
 
-  - id: logging_assert_input
+  - id: log_assert_input
     type: File
+    doc: |-
+        Log file from assertion of input data.
     outputSource: assert_input_data/assertion_data
 
   - id: parameter_derived
+    doc: |-
+        Telescope positions in CORSIKA system.
     type: File
     outputSource: assert_model_parameter/model_parameter
 
-  - id: logging_derive_array_elements_coordinates
+  - id: log_derive_array_elements_coordinates
+    doc: |-
+        Log file from derivation of array element coordinates.
     type: File
     outputSource: derive_array_elements_coordinates/derivation_data
 
-  - id: logging_assert_model_parameter
+  - id: log_assert_model_parameter
+    doc: |-
+        Log file from assertion of derived model parameter.
     type: File
     outputSource: assert_model_parameter/assertion_data
 
