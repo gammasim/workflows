@@ -20,11 +20,13 @@ schema:
               Asset code of the array element.
             type: string
             required: true
+            units: dimensionless
           - name: sequence_number
             description: |-
               Sequence number of the array element.
             type: string
             required: true
+            units: dimensionless
           - name: utm_east
             description: |-
               UTM East coordinate of the array element.
@@ -54,4 +56,5 @@ schema:
               Geographic code of the array element.
             type: string
             required: false
+            units: dimensionless
 ...
