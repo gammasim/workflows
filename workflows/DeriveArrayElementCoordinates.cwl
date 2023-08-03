@@ -88,16 +88,17 @@ steps:
         - model_parameter
         - assertion_data
 
+#  - id: validate_array_elements_coordinates
+#    doc: |-
+#        Validate derived array element coordinates (e.g., through plotting)
+#        and generate validation report.
+#
 #  - id: archive_data
 #    doc: |-
-#        Archive validation data.
-#    run: ./tools/archive_data.cwl
-#    in:
-#      data: derive_array_elements_coordinates/derivation_data
-#      assert_return_code: assert_model_parameter/return_code
-#    when: $(inputs.assert_return_code == 'SUCCESS')
-#    out:
-#      - return_code
+#        Archive validation data and log files.
+#
+#  - id: update_database
+#
 
 requirements:
   SubworkflowFeatureRequirement: {}
