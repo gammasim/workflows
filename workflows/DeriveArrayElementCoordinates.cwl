@@ -14,10 +14,10 @@ inputs:
     doc: |-
         Input data.
 
-#  - id: schema_input
-#    type: File
-#    doc: |-
-#        Schema describing input data.
+  - id: schema_input
+    type: File
+    doc: |-
+        Schema describing input data.
 
   - id: schema
     type: File
@@ -25,6 +25,10 @@ inputs:
         Schema describing model parameters.
 
 outputs:
+
+  - id: logging_assert_input
+    type: File
+    outputSource: assert_input_data/assertion_data
 
   - id: parameter_derived
     type: File
@@ -40,13 +44,17 @@ outputs:
 
 steps:
 
-#  - id: assert_input_data
-#    doc: |-
-#        Assert input data using a schema file.
-#    run: ./tools/assert_data.cwl
-#    in:
-#        data: input
-#        schema: schema_input
+  - id: assert_input_data
+    doc: |-
+        Assert input data using a schema file.
+    run: ./tools/assert_data.cwl
+    in:
+        name: {valueFrom: "assert_input_data"}
+        data: input
+        schema: schema_input
+    out:
+        - model_parameter
+        - assertion_data
 
   - id: derive_array_elements_coordinates
     doc: |-
@@ -55,7 +63,7 @@ steps:
     run:
       ./tools/derive_array_elements_coordinates.cwl
     in:
-      data: input
+      data: assert_input_data/model_parameter
     out:
       - model_parameter
       - derivation_data
@@ -65,6 +73,7 @@ steps:
         Assert derived model parameter using a schema file.
     run: ./tools/assert_data.cwl
     in:
+        name: {valueFrom: "assert_model_parameter"}
         data: derive_array_elements_coordinates/model_parameter
         schema: schema
     out:
@@ -84,3 +93,4 @@ steps:
 
 requirements:
   SubworkflowFeatureRequirement: {}
+  StepInputExpressionRequirement: {}

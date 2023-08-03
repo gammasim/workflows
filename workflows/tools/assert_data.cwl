@@ -13,6 +13,11 @@ baseCommand: [simtools-submit-data-from-external]
 
 inputs:
 
+    - id: name
+      doc: |-
+        Name of the workflow step.
+      type: string
+
     - id: data
       doc: |-
         Input data or model parameter.
@@ -43,10 +48,10 @@ outputs:
         Additional data or logging output from this tool.
       type: File
       outputBinding:
-        glob: "assertion_data.log"
+        glob: $(inputs.name).log
 
-stdout: assertion_data.log
-stderr: assertion_data.log
+stdout: $(inputs.name).log
+stderr: $(inputs.name).log
 
 requirements:
   InlineJavascriptRequirement: {}
