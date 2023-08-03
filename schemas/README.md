@@ -7,3 +7,7 @@ The files are in [json-schema](https://json-schema.org/) and include (among othe
 Files and directories:
 - [schema/](./): reference schemas for all model parameters (one file per parameter) and input data required by the derivation tools
 - [schema/jsonschema.yml](./jsonschema.yml): json schema for validation of all schema files
+
+## Technical notes
+
+For easy generation of json schema files from yaml example, see https://codebeautify.org/yaml-to-json-schema-generator
