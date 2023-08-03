@@ -2,7 +2,7 @@
 # Follows schema https://github.com/gammasim/workflows/schema/jsonschema.yml
 title: Model parameter schema description
 description: |-
-  Model parameter schema description
+  Model parameter schema description.
 name: simpipe-schema
 version: 0.1.0
 
