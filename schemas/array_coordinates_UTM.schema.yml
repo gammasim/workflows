@@ -1,0 +1,60 @@
+---
+# Follows schema https://github.com/gammasim/workflows/schema/jsonschema.yml
+title: Model parameter schema description
+description: |-
+  Data description of array coordinates (in UTM coordinates)
+  used as input to SimPipe.
+name: simpipe-schema
+version: 0.1.0
+
+schema:
+
+  - name: array_coordinates_utm
+    description: |-
+      Array elements (e.g., telescope positions) in UTM coordinates.
+    data:
+      - type: datatable
+        table_columns:
+          - name: asset_code
+            description: |-
+              Asset code of the array element.
+            type: string
+            required: true
+            units: dimensionless
+          - name: sequence_number
+            description: |-
+              Sequence number of the array element.
+            type: string
+            required: true
+            units: dimensionless
+          - name: utm_east
+            description: |-
+              UTM East coordinate of the array element.
+            type: double
+            required: true
+            units: m
+            input_processing:
+              - allow_nan
+          - name: utm_north
+            description: |-
+              UTM North coordinate of the array element.
+            type: double
+            required: true
+            units: m
+            input_processing:
+              - allow_nan
+          - name: alt
+            description: |-
+              Altitude of the array element.
+            required: true
+            type: double
+            units: m
+            input_processing:
+              - allow_nan
+          - name: geo_code
+            description: |-
+              Geographic code of the array element.
+            type: string
+            required: false
+            units: dimensionless
+...

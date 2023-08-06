@@ -6,14 +6,10 @@ label: derive_array_elements_coordinates
 doc: |-
     Derive coordinates of array elements in the
     simulation pipeline coordinate system.
-    This tool performs a coordinate transformation 
+    This tool performs a coordinate transformation
     from UTM to the CORSIKA system.
 
-# giving full path not nice; see if one can do
-# something with environmental variables
-baseCommand:
-    - python
-    - /workdir/gammasim-tools/applications/print_array_elements.py
+baseCommand: [simtools-print-array-elements]
 
 inputs:
 
@@ -24,34 +20,31 @@ inputs:
       inputBinding:
           prefix: --array_element_list
 
-arguments: ["--export", "corsika", "--use_corsika_telescope_height"]
+arguments: [
+    "--export", "corsika", "--use_corsika_telescope_height",
+    "--output_path", "simtools-output", "--use_plain_output_path",
+    "--select_assets", "LSTN", "MSTN", "LSTS", "MSTS", "SSTS"
+    ]
 
 outputs:
 
     - id: model_parameter
       type: File
-# not nice! need to know the exact simtools output directory (with date!)
-# see if this can be changed on the simtools side
       outputBinding:
-        glob: simtools-output/d-2023-06-20/layout/telescope_positions-corsika.ecsv
+        glob: "simtools-output/telescope_positions-corsika.ecsv"
 
     - id: derivation_data
       doc: |-
-        Additional data from derivation workflow
-        DEVELOPERNOTE - not clear if this is required for all workflows
+        Additional data or logging output from this tool.
       type: File
+      outputBinding:
+        glob: "derivation_data.log"
 
-    - id: return_code
-      doc: |-
-        Return code of derivation process.
-      type: string
-
-        
-
-# stdout are written to this file and preserved
-stdout: output.txt
+stdout: derivation_data.log
+stderr: derivation_data.log
 
 requirements:
+  InlineJavascriptRequirement: {}
   DockerRequirement:
-    dockerPull: ghcr.io/gammasim/gammasim-tools-prod:latest
-    dockerOutputDirectory: /workdir/external
+    dockerPull: simtools-prod
+#    dockerPull: ghcr.io/gammasim/simtools-prod:latest

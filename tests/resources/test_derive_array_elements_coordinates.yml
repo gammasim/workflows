@@ -1,0 +1,20 @@
+---
+input:
+  class: File
+  description: |
+    Input data.
+  location:
+    https://raw.githubusercontent.com/gammasim/simtools/main/tests/resources/telescope_positions-North-utm.ecsv
+schema_input:
+  class: File
+  description: |-
+    Schema describing input data.
+  location:
+    https://raw.githubusercontent.com/gammasim/workflows/prototype-DeriveArrayElementCoordinates/schemas/array_coordinates_UTM.schema.yml
+schema:
+  class: File
+  description: |-
+    Schema describing output data
+    (this should be known by the workflow and probably does not need to be provided in future).
+  location:
+    https://raw.githubusercontent.com/gammasim/workflows/prototype-DeriveArrayElementCoordinates/schemas/array_coordinates.schema.yml

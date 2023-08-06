@@ -7,7 +7,7 @@ on:
       - main
   pull_request:
     branches:
-      - main
+      - '*'
 
 jobs:
   lint:
@@ -22,9 +22,14 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Install CWLTool
-        run: pip install cwltool
+      - name: Install CWLTool and yamllint
+        run: |
+          pip install cwltool yamllint
 
-      - name: Lint CWL Files
+      - name: Lint yml files
+        run: |
+          find ./schemas -name "*.yml" -print0 | xargs -0 -I {} yamllint {}
+
+      - name: Lint CWL files
         run: |
           find ./workflows -name "*.cwl" -print0 | xargs -0 -I {} cwltool --validate {}

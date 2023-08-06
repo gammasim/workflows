@@ -6,36 +6,55 @@ label: assert_data
 doc: |-
     Assert data or model parameter(s) using a schema
     describing format, data types, units, and value ranges.
-    DEVELOPERNOTE - Is this part of this tool - 
+    DEVELOPERNOTE - Is this part of this tool -
     Input data is enriched with metadata to ensure full reproducibility.
 
-baseCommand:
-    - echo
+baseCommand: [simtools-submit-data-from-external]
 
 inputs:
 
-    - id: input
-      doc: |- 
+    - id: name
+      doc: |-
+        Name of the workflow step.
+      type: string
+
+    - id: data
+      doc: |-
         Input data or model parameter.
       type: File
+      inputBinding:
+          prefix: --input
 
     - id: schema
       doc: |-
         Schema describing the input data.
       type: File
+      inputBinding:
+          prefix: --schema
+
+arguments: [
+  "--output_path", "simtools-output", "--use_plain_output_path",
+]
 
 outputs:
 
-    - id: data_asserted
+    - id: model_parameter
       type: File
+      outputBinding:
+        glob: "simtools-output/*ecsv"
 
-    - id: return_code
-      type: string
+    - id: assertion_data
+      doc: |-
+        Additional data or logging output from this tool.
+      type: File
+      outputBinding:
+        glob: $(inputs.name).log
 
-# stdout are written to this file and preserved
-stdout: output.txt
+stdout: $(inputs.name).log
+stderr: $(inputs.name).log
 
 requirements:
+  InlineJavascriptRequirement: {}
   DockerRequirement:
-    dockerPull: ghcr.io/gammasim/gammasim-tools-prod:latest
-    dockerOutputDirectory: /workdir/external
+    dockerPull: simtools-prod
+#    dockerPull: ghcr.io/gammasim/simtools-prod:latest

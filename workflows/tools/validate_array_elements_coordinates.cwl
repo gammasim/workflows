@@ -9,9 +9,7 @@ doc: |-
     and with different zooming levels including the telescope altitudes.
     Plot distance distributions between telescopes.
 
-baseCommand:
-  - python
-  - /workdir/gammasim-tools/applications/print_array_elements.py
+baseCommand: [simtools-print-array-elements]
 
 inputs:
 
@@ -32,5 +30,5 @@ stdout: output.txt
 
 requirements:
   DockerRequirement:
-    dockerPull: ghcr.io/gammasim/gammasim-tools-prod:latest
+    dockerPull: ghcr.io/gammasim/simtools-prod:latest
     dockerOutputDirectory: /workdir/external

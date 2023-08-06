@@ -6,6 +6,7 @@ dependencies:
   - python=3.9
   - cwltool
   - jsonschema
+  - pre-commit
   - ruamel.yaml
   - yamllint
 
