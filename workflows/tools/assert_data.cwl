@@ -46,9 +46,9 @@ outputs:
     - id: assertion_data
       doc: |-
         Additional data or logging output from this tool.
-      type: File
+      type: File[]
       outputBinding:
-        glob: $(inputs.name).log
+        glob: ["$(inputs.name).log", "simtools-output/*.metadata.yml"]
 
 stdout: $(inputs.name).log
 stderr: $(inputs.name).log
