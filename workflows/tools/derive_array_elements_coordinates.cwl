@@ -36,9 +36,9 @@ outputs:
     - id: derivation_data
       doc: |-
         Additional data or logging output from this tool.
-      type: File
+      type: File[]
       outputBinding:
-        glob: "derivation_data.log"
+        glob: ["derivation_data.log", "simtools-output/*.metadata.yml"]
 
 stdout: derivation_data.log
 stderr: derivation_data.log

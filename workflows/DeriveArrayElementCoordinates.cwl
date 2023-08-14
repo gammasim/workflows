@@ -27,7 +27,7 @@ inputs:
 outputs:
 
   - id: log_assert_input
-    type: File
+    type: File[]
     doc: |-
         Log file from assertion of input data.
     outputSource: assert_input_data/assertion_data
@@ -41,13 +41,13 @@ outputs:
   - id: log_derive_array_elements_coordinates
     doc: |-
         Log file from derivation of array element coordinates.
-    type: File
+    type: File[]
     outputSource: derive_array_elements_coordinates/derivation_data
 
   - id: log_assert_model_parameter
     doc: |-
         Log file from assertion of derived model parameter.
-    type: File
+    type: File[]
     outputSource: assert_model_parameter/assertion_data
 
 steps:
