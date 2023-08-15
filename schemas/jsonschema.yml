@@ -364,14 +364,14 @@ definitions:
       - m
       - cm
       - nm
-      - muT
+      - uT
       - adc_counts
       - MHz
       - GHz
       - adc_counts / mV
       - mV * ns
       - pct
-      - muA
+      - uA
     title: Units
   SimulationSoftwareName:
     type: string
