@@ -28,9 +28,9 @@ The implementation in *simtools-workflows* consist of the following main compone
 
 ## Workflows and tools
 
-CWL workflows consist of two three main components:
+CWL workflows consists of
 
-- *Tools* are called by *steps* in a *workflow* and are doing one single task. In most cases, tools are calling an application of [simtools](https://github.com/gammasim/simtools) including all required configuration parameters (e.g., [workflows/tools/derive_array_elements_coordinates.cwl](workflows/tools/derive_array_elements_coordinates.cwl)).
+- *Tools* are called by *steps* in a *Workflow* and are doing one single task. In most cases, tools are calling an application of [simtools](https://github.com/gammasim/simtools) including all required configuration parameters (e.g., [workflows/tools/derive_array_elements_coordinates.cwl](workflows/tools/derive_array_elements_coordinates.cwl)).
 - *Workflows* connect *tools*, and allow to execute the steps discussed above (receive, assert, derive, validate, ...), see.e.g, workflow/DeriveArrayElementCoordinates.cwl](./workflows/DeriveArrayElementCoordinates.cwl).
 
 ### Getting started
