@@ -18,13 +18,7 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps:
-  - id: validate_array_elements_coordinates
-    run: tools/validate_array_elements_coordinates.cwl
-    in:
-      input: input
-    out:
-      - output
+steps: []
 
 requirements:
   SubworkflowFeatureRequirement: {}
