@@ -15,7 +15,31 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: validate_camera_face
+    run: tools/validate_camera_face.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: validate_camera_shape
+    run: tools/validate_camera_shape.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: validate_pixel_numbering
+    run: tools/validate_pixel_numbering.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: validate_camera_orientation
+    run: tools/validate_camera_orientation.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

@@ -15,7 +15,13 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: validate_pulse_timing
+    run: tools/validate_pulse_timing.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

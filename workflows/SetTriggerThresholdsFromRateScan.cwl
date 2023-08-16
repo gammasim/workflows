@@ -18,7 +18,19 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: receive_data_from_api
+    run: tools/receive_data_from_api.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: derive_trigger_thresholds_form_rate_scans
+    run: tools/derive_trigger_thresholds_form_rate_scans.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

@@ -17,7 +17,13 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: derive_photon_delay
+    run: tools/derive_photon_delay.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

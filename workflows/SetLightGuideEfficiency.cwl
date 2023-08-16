@@ -17,7 +17,19 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: receive_data_from_api
+    run: tools/receive_data_from_api.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: derive_lightguide_efficiency
+    run: tools/derive_lightguide_efficiency.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

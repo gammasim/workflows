@@ -17,7 +17,25 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: validate_relative_gains
+    run: tools/validate_relative_gains.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: validate_absolute_gains
+    run: tools/validate_absolute_gains.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: validate_photodetector_efficiency
+    run: tools/validate_photodetector_efficiency.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

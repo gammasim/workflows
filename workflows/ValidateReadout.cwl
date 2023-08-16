@@ -15,7 +15,19 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: validate_parameter_by_history
+    run: tools/validate_parameter_by_history.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: validate_readout_window_settings
+    run: tools/validate_readout_window_settings.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

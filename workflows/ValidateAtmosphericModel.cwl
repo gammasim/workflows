@@ -15,7 +15,19 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: validate_cherenkov_distributions_by_history
+    run: tools/validate_cherenkov_distributions_by_history.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: validate_atmospheric_model_by_history
+    run: tools/validate_atmospheric_model_by_history.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

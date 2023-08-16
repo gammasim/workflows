@@ -17,7 +17,25 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: receive_data_from_api
+    run: tools/receive_data_from_api.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: derive_nsb_rate_from_nsb_spectrum
+    run: tools/derive_nsb_rate_from_nsb_spectrum.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: derive_nsb_rate_from_pedestal_events
+    run: tools/derive_nsb_rate_from_pedestal_events.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

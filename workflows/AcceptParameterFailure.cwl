@@ -17,7 +17,19 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: accept_parameter_report
+    run: tools/accept_parameter_report.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: accept_feedback_required
+    run: tools/accept_feedback_required.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

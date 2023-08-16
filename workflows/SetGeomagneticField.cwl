@@ -17,7 +17,19 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: receive_data_from_api
+    run: tools/receive_data_from_api.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: derive_geomagnetic_field
+    run: tools/derive_geomagnetic_field.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

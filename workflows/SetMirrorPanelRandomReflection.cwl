@@ -18,7 +18,25 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: receive_data_from_api::receive_mirror_panel_2f_data
+    run: tools/receive_data_from_api::receive_mirror_panel_2f_data.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: receive_data_from_api::receive_mirror_panel_psf_data
+    run: tools/receive_data_from_api::receive_mirror_panel_psf_data.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: derive_mirror_panel_rnda
+    run: tools/derive_mirror_panel_rnda.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

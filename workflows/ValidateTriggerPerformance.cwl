@@ -15,7 +15,25 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: validate_trigger_pattern_configuration
+    run: tools/validate_trigger_pattern_configuration.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: validate_trigger_threshold_scans
+    run: tools/validate_trigger_threshold_scans.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: validate_trigger_rates
+    run: tools/validate_trigger_rates.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

@@ -17,7 +17,19 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: validate_dc_currents_from_nsb
+    run: tools/validate_dc_currents_from_nsb.cwl
+    in:
+      input: input
+    out:
+      - output
+  - id: validate_pedestal_events
+    run: tools/validate_pedestal_events.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

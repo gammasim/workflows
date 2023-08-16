@@ -19,7 +19,13 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: validate_parameter_by_comparing_simulation_vs_input_data
+    run: tools/validate_parameter_by_comparing_simulation_vs_input_data.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}

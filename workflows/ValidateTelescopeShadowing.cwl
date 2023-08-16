@@ -17,7 +17,13 @@ outputs:
     doc: Placeholder for output data
     type: string
 
-steps: []
+steps:
+  - id: validate_telescope_shadowing_using_simulations
+    run: tools/validate_telescope_shadowing_using_simulations.cwl
+    in:
+      input: input
+    out:
+      - output
 
 requirements:
   SubworkflowFeatureRequirement: {}
