@@ -18,8 +18,8 @@ outputs:
     type: string
 
 steps:
-  - id: receive_data_from_api::receive_dish_psf_data
-    run: tools/receive_data_from_api::receive_dish_psf_data.cwl
+  - id: receive_data_from_api
+    run: tools/receive_data_from_api.cwl
     in:
       input: input
     out:

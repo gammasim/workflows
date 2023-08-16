@@ -20,7 +20,7 @@ outputs:
 
 steps:
   - id: receive_data_from_api
-    run: tools/receive_data_from_api
+    run: tools/receive_data_from_api.cwl
     in:
       input: input
     out:
