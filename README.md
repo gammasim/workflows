@@ -2,53 +2,92 @@
 
 ## Introduction
 
-CWL implementations of simtools workflows:
+CWL implementations of workflows for the CTA Simulation Pipeline.
 
-- workflows for setting and validation of parameters are in [./workflows](./workflows).
-- command line tools used in these workflows and calling simtools applications are in [./workflows/tools](./workflows/tools).
-- input and generated data is validated using schemas located in [./schemas](./schemas).
+Workflows are used to set, derive, and validate simulation model parameters following all or a subset of these steps:
 
-## Getting started
+Setting Workflows:
 
-Clone workflows:
-```
+1. Receive: data or parameter update through an API.
+2. Assert: verify that input data or parameters are in correct units, formats, allowed ranges, etc.
+3. Derive: derive simulation model parameter from received data (not applicable to all input data).
+4. Validate: validate updated simulation model parameter (e.g., by comparison with measurements).
+5. Review: review of updates to simulation model parameter(s) and validation steps (by expert; in some cases automatized).
+
+Acceptance Workflows:
+
+1. Feedback: provide feedback on validation and review (successful / unsuccessful validation).
+2. Update DB: update simulation model database with new parameter (successful validation).
+3. Document: document all derivation and validation steps.
+
+The implementation in *simtools-workflows* consist of the following main components:
+
+- **workflows** encoded in [Common Workflow Language (CWL)](https://www.commonwl.org/) (see [./workflows](./workflows) in this repository)
+- **parameter schemas** defining all input data and simulation model parameters (see [./schemas](./schemas) in this repository)
+- **simulation tools and software** consisting of [simtools](https://github.com/gammasim/simtools) and the simulation software (e.g., [CORSIKA](https://www.iap.kit.edu/corsika/) and [sim_telarray](https://www.mpi-hd.mpg.de/hfm/~bernlohr/sim_telarray/)).
+
+## Workflows and tools
+
+CWL workflows consist of two three main components:
+
+- *Tools* are called by *steps* in a *workflow* and are doing one single task. In most cases, tools are calling an application of [simtools](https://github.com/gammasim/simtools) including all required configuration parameters (e.g., [workflows/tools/derive_array_elements_coordinates.cwl](workflows/tools/derive_array_elements_coordinates.cwl)).
+- *Workflows* connect *tools*, and allow to execute the steps discussed above (receive, assert, derive, validate, ...), see.e.g, workflow/DeriveArrayElementCoordinates.cwl](./workflows/DeriveArrayElementCoordinates.cwl).
+
+### Getting started
+
+Clone the [simtools workflows](https://github.com/gammasim/workflows) repository and install dependencies using mamba or conda:
+
+```bash
 git clone git@github.com:gammasim/workflows.git
-```
-
-Install dependencies using mamba or conda:
-```
 mamba env create -f environment.yml
-conda activate simtools-workflows-dev
+mamba activate simtools-workflows-dev
 ```
 
-## Running examples
+All examples require docker to be installed and running.
+Tools are using the [simtools-prod:latest](https://github.com/gammasim/simtools/pkgs/container/simtools-prod) docker image.
+
+### Example workflow
 
 The following command line tool converts telescope coordinates from UTM to CORSIKA coordinates.
-```
+
+```bash
 cwltool DeriveArrayElementCoordinates.cwl ../tests/resources/test_derive_array_elements_coordinates.yml
 ```
-The workflow steps are:
+
+The workflow steps executed are:
+
 - assert input data
 - convert coordinates
 - assert derive parameter values
 
-(see the log files produced)
+Expected output:
 
-## CWL validation
+- telescope position file in CORSIKA coordinates (ecsv format)
+- metadata files describing each workflow step (yml format)
+- log files (stdout and stderr; ascii format)
 
-Use `cwltool --validate file_name.cwl` to check a workflow or command line tool for valid CWL.
+### CWL validation
 
-## Graphs
+Use `cwltool --validate file_name.cwl` to check a workflow file or command line tool to valid CWL code (this is also done by the CI).
+
+### Workflow Graphs
 
 Prepare a workflow graph, e.g.:
-```
+
+```bash
 cwltool --print-dot DeriveArrayElementCoordinates.cwl | dot -Tsvg > DeriveArrayElementCoordinates.cwl.svg
 ```
 
 Alternatively, use https://view.commonwl.org/ , e.g., see [this example](https://view.commonwl.org/workflows/github.com/gammasim/workflows/blob/prototype-DeriveArrayElementCoordinates/workflows/DeriveArrayElementCoordinates.cwl).
 
+## Parameter schema files
+
+The parameter schema files are used to describe all input data and simulation model parameters and can be found in [./schemas](./schemas) in this repository.
+
+See the [Guide to the Simulation Model Parameter File Schema](./schemas/README.md) for details.
+
 ## Developer Notes
 
-Following notes are unsorted, but probably useful for developement:
+Following notes are unsorted, but probably useful for development:
 
 1. Capture stdout of tools by using `cwltool --log-dir ./my-log-dir...` . This allows to find errors generated by the tools (otherwise reported errors are mostly that output is not found).
