@@ -1,9 +1,10 @@
 # Schema files for description of simulation model parameters and input data
 
 This directory contains a descriptions of all simulation model parameters and of all input data required for the derivation and setting of simulation model parameters.
-
-The files are in easy readable yaml format and follow a fixed [json-schema](https://json-schema.org/), which can be find in [jsonschema.yml](./jsonschema.yml).
 The parameter description includes (among others fields) name, type, format, applicable telescopes, and parameter description.
+
+The files are in human readable yaml format and follow a fixed [json-schema](https://json-schema.org/).
+The full description of the schema is in [jsonschema.yml](./jsonschema.yml), including plenty of comments.
 
 ## Typical Example
 
@@ -52,10 +53,10 @@ Valid keys are described in detail in [jsonschema.yml](./jsonschema.yml). The fo
 ### Header section
 
 - `title`: Title of the schema file.
-- `version`: Version of the schema file.
-- `base_schema`: Name of the base schema file.
-- `base_schema_url`: URL of the base schema file.
-- `base_schema_version`: Version of the base schema file.
+- `version`: Version of this schema file.
+- `base_schema`: Name of the base schema.
+- `base_schema_url`: URL of the base schema.
+- `base_schema_version`: Version of the base schema.
 
 ### Parameter description
 
@@ -65,7 +66,7 @@ Valid keys are described in detail in [jsonschema.yml](./jsonschema.yml). The fo
 
 ### Parameter data
 
-The *key* field is used to describe a list of parameter data:
+The *data* field is used to describe the actual type, format, and allowed values of the parameter.
 
 - `type`: Data type of the parameter.
 - `units`: Units of the parameter (compatible with astropy units). Note that units are explicitly listed in the jsonschema.yml file.
@@ -104,17 +105,17 @@ Input processing in form of sorting, removing of duplicates, etc. can be specifi
 
 ## Instrument description
 
-- class: Instrument class. Allow values are *Camera*, *Site*, *Structure*, *Telescope*
-- type: Instrument type (e.g., *LSTCam*, *MSTStructure*); see [jsonschema.yml](./jsonschema.yml) for a complete list of allowed values.
-- site: CTAO site. Allowed values are *North* and *South*.
+- `class``: Instrument class. Allow values are *Camera*, *Site*, *Structure*, *Telescope*
+- `type``: Instrument type (e.g., *LSTCam*, *MSTStructure*); see [jsonschema.yml](./jsonschema.yml) for a complete list of allowed values.
+- `site``: CTAO site. Allowed values are *North* and *South*.
 
 ## Activity description
 
-Describes setting  and validation activities. Each activity corresponds to a workflow as described in ../[workflows](../workflows).
+Describes setting and validation activities. Each activity corresponds to a workflow as described in ../[workflows](../workflows).
 
 ## Data source description
 
-Describes the source of the data or parameter (e.g., *Calbration*)
+Describes the source of the data or parameter (e.g., *Calibration*)
 
 ## Simulation software description
 
