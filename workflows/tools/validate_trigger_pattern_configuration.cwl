@@ -28,3 +28,7 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# example for SCT trigger pattern checking discussed in
+# [issue 37513](https://redmine.cta-observatory.org/issues/37513)

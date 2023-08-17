@@ -27,3 +27,6 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# see Fig 10 in Gaug, M. et al (ApJS, 2019)

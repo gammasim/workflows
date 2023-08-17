@@ -32,3 +32,7 @@ steps:
 requirements:
   SubworkflowFeatureRequirement: {}
   StepInputExpressionRequirement: {}
+
+# Developer's notes:
+# (to be discussed if this is actually part of the calibration
+# routines)

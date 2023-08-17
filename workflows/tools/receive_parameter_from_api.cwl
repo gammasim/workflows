@@ -29,3 +29,7 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# uses parameter data descriptions in parameter tables for
+# validation (e.g., parameter/Sites.yml).

@@ -30,3 +30,7 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# compares with previous measurements; no cross check with
+# any data from e.g., calibration or observations

@@ -27,3 +27,7 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# includes distribution of pixel charge as function of
+# distance to muon ring centre.

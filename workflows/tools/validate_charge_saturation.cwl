@@ -29,3 +29,7 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# Note that effect of saturation is currently not implemented
+# in sim\_telarray.

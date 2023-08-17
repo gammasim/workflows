@@ -29,3 +29,7 @@ steps:
 requirements:
   SubworkflowFeatureRequirement: {}
   StepInputExpressionRequirement: {}
+
+# Developer's notes:
+# (not entirely clear if these are illuminator or muon-derived
+# efficiency corrections)

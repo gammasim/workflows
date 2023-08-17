@@ -23,3 +23,7 @@ steps: []
 requirements:
   SubworkflowFeatureRequirement: {}
   StepInputExpressionRequirement: {}
+
+# Developer's notes:
+# discuss methods to validate correctness of telescope
+# positions in simulations

@@ -28,3 +28,8 @@ steps:
 requirements:
   SubworkflowFeatureRequirement: {}
   StepInputExpressionRequirement: {}
+
+# Developer's notes:
+# Effective focal is required for the reconstruction,
+# not for simulations. There might be a small dependency
+# on the applied image cleaning method (to be investigated).

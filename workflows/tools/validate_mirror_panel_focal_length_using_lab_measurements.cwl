@@ -27,3 +27,7 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# plotting tool of measurements vs assumed focal lengths
+# in simulation model

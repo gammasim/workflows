@@ -27,3 +27,9 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# should not be necessary if pixel positions/numbers are
+# obtained from the same database.
+# (clarify if this methods includes the validation of trigger
+# pixels)

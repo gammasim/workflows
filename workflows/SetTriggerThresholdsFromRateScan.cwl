@@ -35,3 +35,7 @@ steps:
 requirements:
   SubworkflowFeatureRequirement: {}
   StepInputExpressionRequirement: {}
+
+# Developer's notes:
+# used for generation of thresholds for simulation
+# productions (probably not used during operation stages)

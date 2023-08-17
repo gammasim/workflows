@@ -28,3 +28,8 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# very generic method, although plotting routines
+# often need fine tuning for almost any given
+# parameter

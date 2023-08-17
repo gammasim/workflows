@@ -27,3 +27,10 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# use the `ctapipe-process` tool with the following options
+# --write-muon-parameters
+# --CameraCalibrator.image_extractor_type=GlobalPeakWindowSum
+# --GlobalPeakWindowSum.pixel_fraction=0.2
+# to extract muon optical efficiency

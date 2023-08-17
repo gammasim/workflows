@@ -44,3 +44,7 @@ steps:
 requirements:
   SubworkflowFeatureRequirement: {}
   StepInputExpressionRequirement: {}
+
+# Developer's notes:
+# TODO - review existing implementations in validate_camera_fov
+# gammasim-tools application

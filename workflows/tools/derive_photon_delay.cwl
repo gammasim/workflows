@@ -28,3 +28,8 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# Positive delay corresponds to pulses arriving later in the readout
+# window.
+# TODO - clarify type of simulations (particle type, spectra, etc)

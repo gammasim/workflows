@@ -28,3 +28,6 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# e.g. comparison of ROBAST results with sim_telarray

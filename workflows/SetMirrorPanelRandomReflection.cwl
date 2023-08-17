@@ -25,6 +25,12 @@ steps:
       input: input
     out:
       - output
+  - id: receive_data_from_api
+    run: tools/receive_data_from_api.cwl
+    in:
+      input: input
+    out:
+      - output
   - id: derive_mirror_panel_rnda
     run: tools/derive_mirror_panel_rnda.cwl
     in:

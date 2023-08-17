@@ -25,3 +25,7 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# re-consider. At this point it is not different to
+# validate_parameter_by_expert_statement

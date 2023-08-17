@@ -31,3 +31,9 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# requires simulation of cosmic-ray events
+# Include also trigger pattern comparision?
+# (might give also hints regarding efficiency accross
+# the camera)

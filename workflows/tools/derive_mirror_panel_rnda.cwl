@@ -27,3 +27,7 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# Note that high-order components of this parameter might be
+# affected by the derivation of the whole dish PSF.

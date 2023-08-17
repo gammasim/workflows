@@ -34,3 +34,12 @@ steps:
 requirements:
   SubworkflowFeatureRequirement: {}
   StepInputExpressionRequirement: {}
+
+# Developer's notes:
+# require adjustments of mirror panel reflection angle (second
+# component only) to describe tails.
+# Check if there are any boundaries or input from
+# the mirror alignment system. Discuss if outliers (strongly
+# misaligned mirrors) exist and need to be taken into
+# account. Asymmetry of alignment (top-bottom/left-right) possibly
+# needs to be taken into account.

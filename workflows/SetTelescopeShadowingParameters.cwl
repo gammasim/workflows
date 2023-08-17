@@ -34,3 +34,7 @@ steps:
 requirements:
   SubworkflowFeatureRequirement: {}
   StepInputExpressionRequirement: {}
+
+# Developer's notes:
+# Possible implementation of comparison of ROBAST/sim_telarray
+# shadowing.

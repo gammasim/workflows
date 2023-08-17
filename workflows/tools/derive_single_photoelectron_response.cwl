@@ -28,3 +28,8 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# after pulse folding with prompt spectrum discussed in
+# [redmine issue 26487](https://forge.in2p3.fr/issues/26487);
+# interface to norm_spe program in sim_telarray.

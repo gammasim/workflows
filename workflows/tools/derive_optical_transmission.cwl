@@ -27,3 +27,7 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# requires detailed ray tracing of all telescope components
+# (e.g., using ROBAST, ZEMAX, simtel\_array detailed mode)

@@ -40,3 +40,6 @@ steps:
 requirements:
   SubworkflowFeatureRequirement: {}
   StepInputExpressionRequirement: {}
+
+# Developer's notes:
+# discuss how to deal with a case in which the same method provides two or more values (e.g., testeff provides both efficiencies and NSB rate). TODO - check Grenada talk on NSB

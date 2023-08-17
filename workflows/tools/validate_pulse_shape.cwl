@@ -29,3 +29,8 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# includes estimation of systematic uncertainties from the
+# differences between MC and data pulses shapes as function of
+# integration window size and method.

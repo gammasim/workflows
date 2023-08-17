@@ -27,3 +27,7 @@ requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
     dockerPull: ghcr.io/gammasim/simtools-prod:latest
+
+# Developer's notes:
+# understand where the second component of the mirror_reflection_random_angle
+# is modified to describe tails visible in some dish PSFs
