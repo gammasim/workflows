@@ -8,21 +8,27 @@ doc: |-
     DEVELOPER-NOTE - ingest command to DPPS-BDMS subsystem.
     DEVELOPER-NOTE - assume in that metadata is included.
 
-baseCommand:
-    - echo
+baseCommand: [echo]
 
 inputs:
 
     - id: data
       doc: |-
-        Data or parameter(s) to be archived.
+        Input data or model parameter.
       type: File
 
 outputs:
 
-    - id: return_code
+    - id: output
       doc: |-
-        Return code of archive submission.
+        Placeholder for output
       type: string
 
-stdout: output.txt
+stdout: archive_data.log 
+stderr: archive_data.log
+
+requirements:
+  InlineJavascriptRequirement: {}
+  DockerRequirement:
+    dockerPull: simtools-prod
+#    dockerPull: ghcr.io/gammasim/simtools-prod:latest
