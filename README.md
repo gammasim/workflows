@@ -24,7 +24,8 @@ The implementation in *simtools-workflows* consist of the following main compone
 
 - **workflows** encoded in [Common Workflow Language (CWL)](https://www.commonwl.org/) (see [./workflows](./workflows) in this repository)
 - **parameter schemas** defining all input data and simulation model parameters (see [./schemas](./schemas) in this repository)
-- **simulation tools and software** consisting of [simtools](https://github.com/gammasim/simtools) and the simulation software (e.g., [CORSIKA](https://www.iap.kit.edu/corsika/) and [sim_telarray](https://www.mpi-hd.mpg.de/hfm/~bernlohr/sim_telarray/)).
+
+The workflows are using **simulation tools and software** consisting of [simtools](https://github.com/gammasim/simtools) and the simulation software (e.g., [CORSIKA](https://www.iap.kit.edu/corsika/) and [sim_telarray](https://www.mpi-hd.mpg.de/hfm/~bernlohr/sim_telarray/)).
 
 ## Workflows and tools
 
@@ -32,6 +33,14 @@ CWL workflows consists of
 
 - *Tools* are called by *steps* in a *Workflow* and are doing one single task. In most cases, tools are calling an application of [simtools](https://github.com/gammasim/simtools) including all required configuration parameters (e.g., [workflows/tools/derive_array_elements_coordinates.cwl](workflows/tools/derive_array_elements_coordinates.cwl)).
 - *Workflows* connect *tools*, and allow to execute the steps discussed above (receive, assert, derive, validate, ...), see.e.g, workflow/DeriveArrayElementCoordinates.cwl](./workflows/DeriveArrayElementCoordinates.cwl).
+
+## Parameter and input data schema files
+
+The parameter schema files are used to describe all input data and simulation model parameters and can be found in [./schemas](./schemas) in this repository.
+
+See the [Guide to the Simulation Model Parameter File Schema](./schemas/README.md) for details.
+
+## Using workflows
 
 ### Getting started
 
@@ -56,9 +65,9 @@ cwltool DeriveArrayElementCoordinates.cwl ../tests/resources/test_derive_array_e
 
 The workflow steps executed are:
 
-- assert input data
+- assert input data (as defined in the configuration file; in this example in [tests/resources/test_derive_array_elements_coordinates.yml](./tests/resources/test_derive_array_elements_coordinates.yml))
 - convert coordinates
-- assert derive parameter values
+- assert derived parameter values
 
 Expected output:
 
@@ -66,9 +75,11 @@ Expected output:
 - metadata files describing each workflow step (yml format)
 - log files (stdout and stderr; ascii format)
 
+## Writing and testing workflows
+
 ### CWL validation
 
-Use `cwltool --validate file_name.cwl` to check a workflow file or command line tool to valid CWL code (this is also done by the CI).
+Use `cwltool --validate file_name.cwl` to check a workflow file or command line tool for valid CWL code (this is also done by the CI).
 
 ### Workflow Graphs
 
@@ -80,11 +91,7 @@ cwltool --print-dot DeriveArrayElementCoordinates.cwl | dot -Tsvg > DeriveArrayE
 
 Alternatively, use https://view.commonwl.org/ , e.g., see [this example](https://view.commonwl.org/workflows/github.com/gammasim/workflows/blob/prototype-DeriveArrayElementCoordinates/workflows/DeriveArrayElementCoordinates.cwl).
 
-## Parameter schema files
 
-The parameter schema files are used to describe all input data and simulation model parameters and can be found in [./schemas](./schemas) in this repository.
-
-See the [Guide to the Simulation Model Parameter File Schema](./schemas/README.md) for details.
 
 ## Developer Notes
 
