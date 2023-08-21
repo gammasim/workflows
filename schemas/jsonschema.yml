@@ -15,29 +15,22 @@ definitions:
     properties:
       title:
         type: string
-      description:
-        type: string
-      name:
-        type: string
+        description: "title for schema file"
       version:
         type: string
-      schema:
-        type: array
-        items:
-          $ref: '#/definitions/Parameterlist'
-    required:
-      - schema
-    title: SimulationModelParameters
-  Parameterlist:
-    type: object
-    additionalProperties: false
-    required:
-      - data
-      - description
-      - name
-    properties:
+        description: "version of this schema file (semver)"
+      base_schema:
+        type: string
+        description: "name of base schema (e.g. simpipe-schema)"
+      base_schema_url:
+        type: string
+        description: "url to base schema definition"
+      base_schema_version:
+        type: string
+        description: "version of base schema applied to this file (semver)"
       name:
         type: string
+        description: "name of model parameter"
       developer_note:
         type: string
         description: "notes for developers"
@@ -64,7 +57,14 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/SimulationSoftware'
-    title: Parameterlist
+    required:
+      - version
+      - base_schema
+      - base_schema_version
+      - name
+      - data
+      - description
+    title: SimulationModelParameters
   Activity:
     type: object
     additionalProperties: false
