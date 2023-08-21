@@ -1,0 +1,26 @@
+---
+name: Schema validation
+# Validate schema files in schemas/ directory using simtools-validate-schema-files
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  schema-validation:
+    runs-on: ubuntu-latest
+    container: ghcr.io/gammasim/simtools-prod:latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Validate schema files
+        run: |
+          for file in $(ls schemas/*.schema.yml); do
+            simtools-validate-schema-files --file_name $file --schema schemas/jsonschema.yml
+          done
