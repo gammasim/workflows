@@ -89,7 +89,7 @@ Prepare a workflow graph, e.g.:
 cwltool --print-dot DeriveArrayElementCoordinates.cwl | dot -Tsvg > DeriveArrayElementCoordinates.cwl.svg
 ```
 
-Alternatively, use https://view.commonwl.org/ , e.g., see [this example](https://view.commonwl.org/workflows/github.com/gammasim/workflows/blob/prototype-DeriveArrayElementCoordinates/workflows/DeriveArrayElementCoordinates.cwl).
+Alternatively, use https://view.commonwl.org/ , e.g., see [this example](https://view.commonwl.org/workflows/github.com/gammasim/workflows/blob/main/workflows/DeriveArrayElementCoordinates.cwl)
 
 
 
