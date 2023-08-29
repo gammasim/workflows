@@ -11,3 +11,15 @@ mirror_panel_psf_measurement:
     Mirror panel PSF measurement.
   location:
     https://raw.githubusercontent.com/gammasim/simtools/main/tests/resources/MLTdata-preproduction.ecsv
+schema_mirror_list:
+  class: File
+  description: |-
+    Schema describing mirror_list.
+  location:
+    https://raw.githubusercontent.com/gammasim/simtools/main/tests/resources/MST_mirror_2f_measurements.schema.yml
+schema_mirror_panel_psf_measurement:
+  class: File
+  description: |-
+    Schema describing mirror_panel_psf_measurement.
+  location:
+    https://raw.githubusercontent.com/gammasim/simtools/main/tests/resources/MST_mirror_2f_measurements.schema.yml
