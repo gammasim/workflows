@@ -46,5 +46,4 @@ stderr: derivation_data.log
 requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
-    dockerPull: simtools-prod
-#    dockerPull: ghcr.io/gammasim/simtools-prod:latest
+    dockerPull: ghcr.io/gammasim/simtools-prod:latest

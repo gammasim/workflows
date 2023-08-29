@@ -38,7 +38,7 @@ arguments: [
 
 outputs:
 
-    - id: model_parameter
+    - id: assertion_output
       type: File
       outputBinding:
         glob: "simtools-output/*ecsv"
@@ -56,5 +56,4 @@ stderr: $(inputs.name).log
 requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
-    dockerPull: simtools-prod
-#    dockerPull: ghcr.io/gammasim/simtools-prod:latest
+    dockerPull: ghcr.io/gammasim/simtools-prod:latest
