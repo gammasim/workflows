@@ -4,8 +4,8 @@ class: Workflow
 
 label: DeriveArrayElementCoordinates
 doc: |-
-    Derive array element coordinates and archive
-    data generated in derivation process.
+  Derive array element coordinates and archive
+  data generated in derivation process.
 
 inputs:
 
@@ -26,17 +26,17 @@ inputs:
 
 outputs:
 
-  - id: log_assert_input
-    type: File[]
-    doc: |-
-        Log file from assertion of input data.
-    outputSource: assert_input_data/assertion_data
-
   - id: parameter_derived
     doc: |-
         Telescope positions in CORSIKA system.
     type: File
     outputSource: assert_model_parameter/model_parameter
+
+  - id: log_assert_input
+    type: File[]
+    doc: |-
+        Log file from assertion of input data.
+    outputSource: assert_input_data/assertion_data
 
   - id: log_derive_array_elements_coordinates
     doc: |-
