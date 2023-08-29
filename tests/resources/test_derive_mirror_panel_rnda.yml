@@ -1,0 +1,13 @@
+---
+mirror_list:
+  class: File
+  description: |
+    Mirror list with including focal lengths per mirror panel.
+  location:
+    https://raw.githubusercontent.com/gammasim/simtools/main/tests/resources/MLTdata-preproduction.ecsv
+mirror_panel_psf_measurement:
+  class: File
+  description: |
+    Mirror panel PSF measurement.
+  location:
+    https://raw.githubusercontent.com/gammasim/simtools/main/tests/resources/MLTdata-preproduction.ecsv
