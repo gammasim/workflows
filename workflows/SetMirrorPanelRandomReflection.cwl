@@ -9,34 +9,43 @@ doc: |-
   function measurements.
 
 inputs:
-  - id: input
-    doc: Placeholder for input data
-    type: string
+
+  - id: mirror_list
+    doc: |
+      Mirror list including focal lengths per mirror panel.
+    type: File
+
+  - id: mirror_panel_psf_measurement
+    doc: |
+      Mirror panel optical point-spread function
+      measurement.
+    type: File
 
 outputs:
-  - id: output
-    doc: Placeholder for output data
-    type: string
+
+  - id: parameter_derived
+    doc: |
+      Derived mirror random reflection angle.
+    type: File[]
+    outputSource: derive_mirror_panel_rnda/model_parameter
+
+  - id: log_derive_mirror_panel_rnda
+    doc: |-
+      Log file from derivation of mirror panel reflection angle
+    type: File[]
+    outputSource:
+      - derive_mirror_panel_rnda/derivation_data
 
 steps:
-  - id: receive_data_from_api
-    run: tools/receive_data_from_api.cwl
-    in:
-      input: input
-    out:
-      - output
-  - id: receive_data_from_api
-    run: tools/receive_data_from_api.cwl
-    in:
-      input: input
-    out:
-      - output
+
   - id: derive_mirror_panel_rnda
     run: tools/derive_mirror_panel_rnda.cwl
     in:
-      input: input
+      mirror_list: mirror_list
+      mirror_panel_psf_measurement: mirror_panel_psf_measurement
     out:
-      - output
+      - model_parameter
+      - derivation_data
 
 requirements:
   SubworkflowFeatureRequirement: {}
