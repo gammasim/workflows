@@ -52,7 +52,7 @@ outputs:
     doc: |-
         Log file from assertion of input data.
     outputSource: assert_input_data_mirror_list/assertion_data
-  
+
   - id: log_assert_input_mirror_panel_psf_measurement
     type: File[]
     doc: |-
