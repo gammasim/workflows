@@ -1,0 +1,39 @@
+%YAML 1.2
+---
+title: Schema for discriminator_var_gate_length model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: discriminator_var_gate_length
+description: |-
+  Variation of gate length (Gaussian r.m.s.). In comparator-type
+  response, this variable is not used but only
+  discriminator_var_time_over_threshold.
+short_description: Variation of gate length (Gaussian r.m.s).
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: double
+    units: ns
+    default: 0.1
+    condition: default_trigger==Majority
+    allowed_range:
+      min: 0.0
+      max: 100.0
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTriggerPerformance
+source:
+  - Observation execution
+simulation_software:
+  - name: sim_telarray

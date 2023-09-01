@@ -1,0 +1,40 @@
+%YAML 1.2
+---
+title: Schema for fadc_sum_offset model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: fadc_sum_offset
+description: |-
+  Number of bins before telescope trigger where summing or reading of
+  sampled data starts (see also description of fadc_sum_bins).  With peak
+  sensing readout, the same offset is used for setting the interval for
+  the searching of the peak signal.  For negative values, the summing or
+  reading starts after the trigger.
+short_description: |-
+  Number of bins before telescope trigger where summing or reading of
+  sampled data starts.
+data:
+  - type: uint
+    units: dimensionless
+    allowed_range:
+      min: 0
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateReadout
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

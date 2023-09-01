@@ -1,0 +1,31 @@
+%YAML 1.2
+---
+title: Schema for parabolic_dish model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: parabolic_dish
+description: |-
+  Parabolic dish.
+  Mirror tiles still have spherical shape (similar to the Davies-Cotton
+  optics), but their focal lengths are adapted to the distance from the
+  focus (since the geometric mean of minimum and maximum radius of
+  curvature of the paraboloid is very close to that distance).
+short_description: Parabolic dish shape is used.
+data:
+  - type: boolean
+    default: false
+instrument:
+  class: Structure
+  type:
+    - LSTStructure
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

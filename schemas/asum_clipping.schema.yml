@@ -1,0 +1,37 @@
+%YAML 1.2
+---
+title: Schema for asum_clipping model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: asum_clipping
+description: |-
+  The amplitude level at which the signal from each pixel
+  (after optional shaping) is clipped for its contribution
+  to the analog sum trigger.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: double
+    default: 0.0
+    units: mV
+    allowed_range:
+      min: 0.0
+    condition: default_trigger==AnalogSum
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTriggerPerformance
+source:
+  - Observation execution
+simulation_software:
+  - name: sim_telarray

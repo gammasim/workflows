@@ -1,0 +1,36 @@
+%YAML 1.2
+---
+title: Schema for trigger_pixels model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: trigger_pixels
+description: |-
+  Number of pixels required for single telescope trigger.
+  With flexible camera definitions, this is the default number for the
+  multiplicity required per trigger group. Any definition of trigger groups
+  (e.g., parameter DigitalSumTrigger) overwrites the setting of
+  trigger_pixels.
+short_description: Number of pixels required for single telescope trigger.
+data:
+  - type: uint
+    units: dimensionless
+    default: 4
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTriggerPerformance
+source:
+  - Observation execution
+simulation_software:
+  - name: sim_telarray

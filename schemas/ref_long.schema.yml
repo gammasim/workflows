@@ -1,0 +1,37 @@
+%YAML 1.2
+---
+title: Schema for ref_long model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: ref_long
+description: |-
+  Longitude of site centre.
+  Telescope x,y positions are calculated relative to this
+  position.
+short_description: Longitude of site centre.
+data:
+  - type: double
+    units: deg
+    allowed_range:
+      min: -180.0
+      max: 180.0
+instrument:
+  class: Site
+  type:
+    - Observatory
+  site:
+    - North
+    - South
+activity:
+  setting:
+    - SetParameterFromExternal
+    - SetArrayElementCoordinates
+  validation:
+    - ValidateParameterByExpert
+    - ValidateArrayElementCoordinates
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: corsika

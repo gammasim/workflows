@@ -1,0 +1,45 @@
+%YAML 1.2
+---
+title: Schema for fadc_max_sum model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: fadc_max_sum
+developer_note: Not applicable for CTA telescopes.
+description: |-
+  The maximum value of a pulse sum produced by hardware pulse summation,
+  in sum mode rather than recording pulse samples.
+  Typical limitations are 15 or 16 bits, i.e. 32767 or 65535.
+short_description: |-
+  The maximum value of a pulse sum produced by hardware pulse summation,
+  in sum mode rather than recording pulse samples.
+data:
+  - type: uint
+    description: |-
+      Maximum value of a pulse sum
+      (for high-gain channel in case of dual-readout chain)
+    units: adc_counts
+    allowed_range:
+      min: 0
+  - type: uint
+    description: |-
+      Maximum value of a pulse sum
+      (for low-gain channel in case of dual-readout chain)
+    condition: num_gains==2
+    units: adc_counts
+    allowed_range:
+      min: 0
+instrument:
+  class: Camera
+  type:
+    - None
+activity:
+  setting:
+    - None
+  validation:
+    - None
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

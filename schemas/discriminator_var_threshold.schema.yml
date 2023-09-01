@@ -1,0 +1,37 @@
+%YAML 1.2
+---
+title: Schema for discriminator_var_threshold model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: discriminator_var_threshold
+description: |-
+  Channel-to-channel variations (random Gaussian r.m.s.) of
+  discriminator/comparator threshold.
+short_description: Channel-to-channel variation of discriminator threshold.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: double
+    units: mV
+    default: 0.2
+    condition: default_trigger==Majority
+    allowed_range:
+      min: 0.0
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTriggerPerformance
+source:
+  - Calibration
+simulation_software:
+  - name: sim_telarray

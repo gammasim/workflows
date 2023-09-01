@@ -1,0 +1,36 @@
+%YAML 1.2
+---
+title: Schema for telescope_sphere_radius model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: telescope_sphere_radius
+developer_note: |-
+  Part of `array_coordinates` in CORSIKA.
+  Required to set fiducial sphere center at correct height above ground.
+  TODO - define validation workflow (e.g., compare image size of MC and
+  data; same as for `telescope_sphere_radius`)
+  Note the axes_offset in the calculation of the sphere radius.
+description: Telescope fiducial sphere radius.
+data:
+  - type: double
+    units: m
+instrument:
+  class: Structure
+  type:
+    - LSTStructure
+    - MSTStructure
+    - SSTStructure
+    - SCTStructure
+activity:
+  setting:
+    - SetParameterFromExternal
+    - SetTelescopeFiducialSphere
+  validation:
+    - ValidateParameterByExpert
+    - ValidationWorkflowMissing
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: corsika

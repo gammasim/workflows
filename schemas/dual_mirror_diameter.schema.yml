@@ -1,0 +1,35 @@
+%YAML 1.2
+---
+title: Schema for dual_mirror_diameter model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: dual_mirror_diameter
+description: |-
+  The outer diameter of the primary and secondary reflectors.
+  Used only in case mirror_list is not defined (i.e., mirror_list=none).
+data:
+  - name: primary_mirror_diameter
+    type: double
+    units: cm
+    condition: mirror_list==None&&mirror_class==2
+  - name: secondary_mirror_diameter
+    type: double
+    units: cm
+    condition: mirror_list==None&&mirror_class==2
+instrument:
+  class: Structure
+  type:
+    - SSTStructure
+    - SCTStructure
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTelescopeStructure
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

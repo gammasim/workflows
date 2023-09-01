@@ -1,0 +1,80 @@
+%YAML 1.2
+---
+title: Schema for mirror_list model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: mirror_list
+description: List of mirror positions, diameters, focal lengths, and shape codes.
+data:
+  - type: datatable
+    table_columns:
+      - name: mirror_x
+        description: Mirror x position (North/Down).
+        units: cm
+        required: true
+        type: double
+      - name: mirror_y
+        description: Mirror y position (West/Right from camera).
+        units: cm
+        required: true
+        type: double
+      - name: mirror_diameter
+        description: Mirror flat-to-flat diameter
+        units: cm
+        required: true
+        type: double
+      - name: focal_length
+        description: |-
+          Mirror focal length.
+          Note if positive, no par:random_focal_length based values added.
+        units: cm
+        required: true
+        type: double
+      - name: shape_type
+        description: |-
+          Mirror shape type (0=circular,
+          1=hex. with flat side parallel to y,
+          2=square, 3=other hexagonal).
+        units: dimensionless
+        type: uint
+        allowed_values:
+          - 0
+          - 1
+          - 2
+          - 3
+        default: 0
+        required: false
+      - name: mirror_z
+        description: Mirror height above dish back plane.
+        units: cm
+        required: false
+        type: double
+      - name: mirror_id
+        description: Mirror identifier.
+        type: uint
+        units: dimensionless
+        required: false
+instrument:
+  class: Structure
+  type:
+    - LSTStructure
+    - MSTStructure
+    - SSTStructure
+    - SCTStructure
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateMirrorPanelParameters
+    - ValidateOpticalPSF
+    - ValidateTelescopeStructure
+    - ValidateTelescopeEfficiency
+    - ValidateTelescopeShadowing
+    - ValidateTelescopeSimulationModel
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

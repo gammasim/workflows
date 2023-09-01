@@ -1,0 +1,37 @@
+%YAML 1.2
+---
+title: Schema for peak_sensing model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: peak_sensing
+description: |-
+  Report sample with the largest signal in the range otherwise
+  used for ADC sums instead of sampling the pulses and optionally
+  integrating signals over a given number of samples.
+  The output is reported to be an ADC sum over
+  one sample; also pedestals are for one sample only.
+  This option is incompatible with sample-mode output.
+short_description: Use peak sensing instead of sampling of the pulse.
+data:
+  - type: boolean
+    units: dimensionless
+    default: 0
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

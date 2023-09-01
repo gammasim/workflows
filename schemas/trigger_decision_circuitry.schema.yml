@@ -1,0 +1,59 @@
+%YAML 1.2
+---
+title: Schema for trigger_decision_circuitry model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: trigger_decision_circuitry
+developer_note: |-
+  Part of sim_telarray camera configuration file (TRIGGER lines).
+  TODO - discuss usage of anyOf / allOf in this context.
+description: List specifying the circuitry for trigger decisions per pixel group.
+data:
+  - type: datatable
+    name: majority_trigger
+    description: Majority trigger definition.
+    table_columns:
+      - name: majority_trigger_line
+        description: Majority trigger statement.
+        type: string
+        units: dimensionless
+        required: false
+  - type: datatable
+    name: analog_sum_trigger
+    description: Analog sum trigger definition.
+    table_columns:
+      - name: asum_trigger_line
+        description: Analog sum trigger statement.
+        type: string
+        required: false
+        units: dimensionless
+  - type: datatable
+    name: Digital_sum_trigger
+    description: Digital sum trigger definition.
+    table_columns:
+      - name: dsum_trigger_line
+        description: Digital sum trigger statement.
+        type: string
+        required: false
+        units: dimensionless
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTriggerPerformance
+source:
+  - Initial instrument setup
+  - Observation execution
+simulation_software:
+  - name: sim_telarray

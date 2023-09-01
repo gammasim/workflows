@@ -1,0 +1,53 @@
+%YAML 1.2
+---
+title: Schema for dsum_shaping model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: dsum_shaping
+description: |-
+  Shaping (convolution) parameters for a digitized detector signal
+  (time step of ADC time slices) to the resulting signal from which a
+  digital-sum trigger decision may be derived. The values are a digital
+  signal processing kernel.  For example, a file containing
+  $\left( \begin{smallmatrix} 0 & 1\\ 1&-1 \end{smallmatrix} \right)$
+  would be a simple differencing filter,
+  $b[n] = a[n] - a[n-1]$.
+  The first column is in ADC bins behind current interval, the second
+  value is the factor applied to the corresponding ADC value.
+short_description: |-
+  Shaping (convolution) parameters for a digitized detector signal
+  to the resulting signal from which a digital-sum trigger decision may be
+  derived.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: datatable
+    table_columns:
+      - name: time
+        description: Time steps.
+        required: true
+        units: dimensionless
+        type: double
+      - name: shape
+        description: Shaping factor.
+        required: true
+        units: dimensionless
+        type: double
+    condition: default_trigger==DigitalSum
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+source:
+  - Observation execution
+simulation_software:
+  - name: sim_telarray

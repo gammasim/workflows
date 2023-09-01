@@ -1,0 +1,37 @@
+%YAML 1.2
+---
+title: Schema for discriminator_var_time_over_threshold model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: discriminator_var_time_over_threshold
+description: |-
+  Pixel-to-pixel variation of the time over threshold required before logic
+  response switches to true.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: double
+    units: ns
+    default: 0.1
+    condition: default_trigger==Majority
+    allowed_range:
+      min: 0.0
+      max: 100.0
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTriggerPerformance
+source:
+  - Calibration
+simulation_software:
+  - name: sim_telarray

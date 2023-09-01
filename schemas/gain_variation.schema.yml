@@ -1,0 +1,41 @@
+%YAML 1.2
+---
+title: Schema for gain_variation model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: gain_variation
+short_description: |-
+  Fractional gain variation between different photo detectors after
+  adjusting the voltage to have approximately the same gain in all channels.
+description: |-
+  Fractional gain variation between different photo detectors after
+  adjusting the voltage to have approximately the same gain in all channels.
+  The parameter sets the Gaussian r.m.s. spread of random fluctuations, used
+  as \texttt{amplitude *= RandGaus(1., gain_variation)}.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: double
+    units: dimensionless
+    allowed_range:
+      min: 0.0
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateCameraChargeResponse
+    - ValidateCameraGainsAndEfficiency
+    - ValidateTelescopeSimulationModel
+source:
+  - Calibration
+simulation_software:
+  - name: sim_telarray

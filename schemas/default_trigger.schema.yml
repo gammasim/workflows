@@ -1,0 +1,34 @@
+%YAML 1.2
+---
+title: Schema for default_trigger model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: default_trigger
+description: Trigger algorithm used.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: string
+    default: Majority
+    units: dimensionless
+    allowed_values:
+      - Majority
+      - AnalogSum
+      - DigitalSum
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

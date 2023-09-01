@@ -1,0 +1,37 @@
+%YAML 1.2
+---
+title: Schema for camera_type model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: camera_type
+developer_note: |-
+  TODO - The option of flexible camera configuration is the
+  only one allowed. This parameter could be removed.
+description: |-
+  'Shape of the camera body (1: hexagonal, 2: square,
+  3: use flexible camera configuration).'
+short_description: Shape of the camera body.
+data:
+  - type: uint
+    default: 3
+    allowed_values:
+      - 3
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

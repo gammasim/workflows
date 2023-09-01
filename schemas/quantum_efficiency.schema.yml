@@ -1,0 +1,82 @@
+%YAML 1.2
+---
+title: Schema for quantum_efficiency model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: quantum_efficiency
+description: |-
+  Quantum or photon detection efficiency
+  averaged over all pixels per camera.
+  Random pixel-to-pixel variations are calculated using
+  the qe_variation parameter. Pixel-to-pixel differences
+  in detection efficiency using scaling factors can be
+  specified in the camera_config_file.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: datatable
+    table_columns:
+      - name: wavelength
+        description: Wavelength.
+        required: true
+        units: nm
+        type: double
+        required_range:
+          min: 300.0
+          max: 700.0
+        input_processing:
+          - remove_duplicates
+          - sort
+      - name: photo_detection_efficiency
+        description: Average quantum or photon detection efficiency.
+        required: true
+        units: dimensionless
+        type: double
+        allowed_range:
+          min: 0.0
+          max: 1.0
+      - name: sigma
+        description: r.m.s. of individual PDE values.
+        required: false
+        units: dimensionless
+        type: double
+        allowed_range:
+          min: 0.0
+          max: 1.0
+      - name: pde_min
+        description: Minimum detection efficiency of the photo detector sample.
+        required: false
+        units: dimensionless
+        type: double
+        allowed_range:
+          min: 0.0
+          max: 1.0
+      - name: pde_max
+        description: Maximum detection efficiency of the photo detector sample.
+        required: false
+        units: dimensionless
+        type: double
+        allowed_range:
+          min: 0.0
+          max: 1.0
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateCameraChargeResponse
+    - ValidateCameraGainsAndEfficiency
+    - ValidateTelescopeEfficiency
+    - ValidateTelescopeSimulationModel
+source:
+  - Calibration
+simulation_software:
+  - name: sim_telarray
