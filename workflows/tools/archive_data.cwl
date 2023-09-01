@@ -24,7 +24,7 @@ outputs:
         Placeholder for output
       type: string
 
-stdout: archive_data.log 
+stdout: archive_data.log
 stderr: archive_data.log
 
 requirements:

@@ -11,6 +11,12 @@ doc: |-
 
 baseCommand: [simtools-print-array-elements]
 
+arguments: [
+    "--export", "corsika", "--use_corsika_telescope_height",
+    "--output_path", "simtools-output", "--use_plain_output_path",
+    "--select_assets", "LSTN", "MSTN", "LSTS", "MSTS", "SSTS"
+    ]
+
 inputs:
 
     - id: data
@@ -19,12 +25,6 @@ inputs:
       type: File
       inputBinding:
           prefix: --array_element_list
-
-arguments: [
-    "--export", "corsika", "--use_corsika_telescope_height",
-    "--output_path", "simtools-output", "--use_plain_output_path",
-    "--select_assets", "LSTN", "MSTN", "LSTS", "MSTS", "SSTS"
-    ]
 
 outputs:
 
@@ -46,5 +46,4 @@ stderr: derivation_data.log
 requirements:
   InlineJavascriptRequirement: {}
   DockerRequirement:
-    dockerPull: simtools-prod
-#    dockerPull: ghcr.io/gammasim/simtools-prod:latest
+    dockerPull: ghcr.io/gammasim/simtools-prod:latest
