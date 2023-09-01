@@ -3,7 +3,7 @@
 This directory contains a descriptions of all simulation model parameters and of all input data required for the derivation and setting of simulation model parameters.
 The description includes (among others fields) name, type, format, applicable telescopes, and parameter description.
 
-The model parameter descriptions are derived from (and planned to be synchronized with) the [simtel\_array manual](https://www.mpi-hd.mpg.de/hfm/~bernlohr/sim_telarray).
+The model parameter descriptions are derived from (and planned to be synchronized with) the [sim_telarray manual](https://www.mpi-hd.mpg.de/hfm/~bernlohr/sim_telarray).
 
 The files are in human readable yaml format and follow a fixed [json-schema](https://json-schema.org/).
 The full description of the schema is in [jsonschema.yml](./jsonschema.yml), including plenty of comments.
