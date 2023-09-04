@@ -1,0 +1,47 @@
+%YAML 1.2
+---
+title: Schema for focal_surface_parameters model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: focal_surface_parameters
+description: |-
+  Defines the position of the focal surface along the optical axis and
+  its off-axis shape.  The par:focus-offset still applies, but with a
+  curved focal surface only in the camera centre, such that star light
+  would be focused on the camera lid surface but light from the typical
+  distance of the shower maximum would be focused on the pixel entrance.
+  Note that this offset may be impractically small with secondary mirrors
+  reducing the plate scale.  The direction of the incoming rays is not
+  transformed into the normal plane of the focal surface, thus
+  corresponding to pixels shifted w.r.t.\ to a plane.
+short_description: |-
+  Defines the position of the focal surface along the optical axis and its
+  off-axis shape.
+data:
+  - type: datatable
+    table_columns:
+      - name: focal_surface_p_i
+        description: |-
+          Parameter adding $p_i r^{(2i)}$ to focus_offset
+          ($i$ is the row number starting from 0)
+        units: cm
+        type: double
+    condition: mirror_class==2
+instrument:
+  class: Structure
+  type:
+    - SSTStructure
+    - SCTStructure
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateCameraGeometry
+    - ValidateOpticalPSF
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

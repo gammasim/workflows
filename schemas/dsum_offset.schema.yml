@@ -1,0 +1,38 @@
+%YAML 1.2
+---
+title: Schema for dsum_offset model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: dsum_offset
+description: |-
+  Offset in time where digital pulse shaping is done. Time intervals at
+  the start and end of the simulated time window that are affected by
+  shaping of missing outside signals are not used for trigger evaluation.
+short_description: Time offset applied before signal processing.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: double
+    units: ns
+    default: 0.0
+    allowed_range:
+      min: 0.0
+    condition: default_trigger==DigitalSum
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTriggerPerformance
+source:
+  - Observation execution
+simulation_software:
+  - name: sim_telarray

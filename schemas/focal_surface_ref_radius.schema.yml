@@ -1,0 +1,29 @@
+%YAML 1.2
+---
+title: Schema for focal_surface_ref_radius model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: focal_surface_ref_radius
+description: The length scale to which the focal_surface_parameters apply.
+data:
+  - type: double
+    condition: mirror_class==2
+    units: cm
+    default: 1.0
+instrument:
+  class: Structure
+  type:
+    - SSTStructure
+    - SCTStructure
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTelescopeStructure
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

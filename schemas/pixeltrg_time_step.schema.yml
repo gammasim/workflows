@@ -1,0 +1,39 @@
+%YAML 1.2
+---
+title: Schema for pixeltrg_time_step model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: pixeltrg_time_step
+description: |-
+  If non-zero, the time between the telescope trigger and the time
+  when the pixel discriminator/comparator fired is recorded under
+  the telescope event in the given time steps (negative for
+  pixels fired before the telescope trigger; possible delays involved
+  in a real instrument are not accounted for).
+short_description: Time difference between telescope and pixel trigger recording.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: double
+    units: ns
+    default: 0.0
+    allowed_range:
+      min: 0.0
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTriggerPerformance
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

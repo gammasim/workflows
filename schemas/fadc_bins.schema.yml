@@ -1,0 +1,38 @@
+%YAML 1.2
+---
+title: Schema for fadc_bins model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: fadc_bins
+description: |-
+  Number of FADC bins to be simulated.
+  The median of all Cherenkov light photo-electrons will be near 40\% of
+  the interval length determined by fadc_bins, unless shifted by
+  photon_delay. If photon_delay is set to zero, this will be the number of
+  FADC bins read out.
+short_description: Number of FADC bins to be simulated.
+data:
+  - type: uint
+    units: dimensionless
+    allowed_range:
+      min: 1
+      max: 200
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

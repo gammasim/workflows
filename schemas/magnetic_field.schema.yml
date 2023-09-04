@@ -1,0 +1,43 @@
+%YAML 1.2
+---
+title: Schema for magnetic_field model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: magnetic_field
+description: Geomagnetic field at given site.
+data:
+  - type: double
+    units: uT
+    description: horizontal geomagnetic field component (H).
+  - type: double
+    units: uT
+    description: vertical geomagnetic field component (Z).
+  - type: double
+    units: deg
+    description: |-
+      rotation angle of x-axis relative to magnetic north
+      (corresponds to CORSIKA ARRANG parameter)
+    allowed_range:
+      min: -180.0
+      max: 180.0
+instrument:
+  class: Site
+  type:
+    - Atmosphere
+  site:
+    - North
+    - South
+activity:
+  setting:
+    - SetGeomagneticField
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateAtmosphericModel
+    - ValidateTelescopeSimulationModel
+source:
+  - External
+simulation_software:
+  - name: corsika

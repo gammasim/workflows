@@ -1,0 +1,33 @@
+%YAML 1.2
+---
+title: Schema for dsum_shaping_renormalize model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: dsum_shaping_renormalize
+description: |-
+  The positive part of the shaping kernel is auto-normalized
+  to a sum of 1.0 (if true). If false, the shaping kernel is used as-is.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: boolean
+    default: true
+    condition: default_trigger==DigitalSum
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTriggerPerformance
+source:
+  - Observation execution
+simulation_software:
+  - name: sim_telarray

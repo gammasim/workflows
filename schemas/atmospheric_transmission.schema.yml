@@ -1,0 +1,63 @@
+%YAML 1.2
+---
+title: Schema for atmospheric_transmission model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: atmospheric_transmission
+developer_note: |-
+  TODO - crosscheck required range
+  This is a 3D table containing extinction vs altitude
+  vs wavelength values.
+description: |-
+  Optical thickness as a function of photon emission altitude
+  and wavelength.
+data:
+  - type: datatable
+    table_columns:
+      - name: wavelength
+        description: Wavelength.
+        required: true
+        units: nm
+        type: double
+        required_range:
+          min: 200.0
+          max: 700.0
+        column_type: independent
+      - name: altitude
+        description: Altitude above sea level.
+        required: true
+        units: km
+        type: double
+        required_range:
+          min: 0.0
+          max: 100.0
+        column_type: independent
+      - name: extinction
+        description: Extinction coefficient.
+        required: true
+        units: dimensionless
+        type: double
+        allowed_range:
+          min: 0.0
+        column_type: dependent
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateAtmosphericModel
+    - ValidateTelescopeSimulationModel
+instrument:
+  class: Site
+  type:
+    - Atmosphere
+  site:
+    - North
+    - South
+source:
+  - Calibration
+simulation_software:
+  - name: corsika
+  - name: sim_telarray

@@ -1,0 +1,48 @@
+%YAML 1.2
+---
+title: Schema for trigger_delay_compensation model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: trigger_delay_compensation
+developer_note: Always zero for all cameras.
+description: |-
+  The majority trigger, analog sum trigger, and digital sum trigger
+  decisions result in different times of the trigger decision. To
+  compensate for this, a delay is applied for array-level coincidences
+  of triggers from telescopes with different trigger types.
+short_description: |-
+  The delay applied to the trigger output to compensate for the different
+  execution times of each trigger algorithm.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: double
+    description: Delay applied for majority trigger.
+    units: ns
+    default: 0.0
+  - type: double
+    description: Delay applied for analog sum trigger.
+    units: ns
+    default: 0.0
+  - type: double
+    description: Delay applied for digital sum trigger.
+    units: ns
+    default: 0.0
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTriggerPerformance
+source:
+  - Observation execution
+simulation_software:
+  - name: sim_telarray

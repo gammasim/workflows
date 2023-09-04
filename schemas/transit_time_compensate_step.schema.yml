@@ -1,0 +1,36 @@
+%YAML 1.2
+---
+title: Schema for transit_time_compensate_step model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: transit_time_compensate_step
+description: |-
+  If signal delays can be compensated independent of the sampling,
+  this is the time step in which this compensation can be done.
+  A value of zero means no compensation is applied.
+  The same compensation is applied to all channels.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: double
+    units: ns
+    allowed_range:
+      min: 0.0
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateCameraTimeResponse
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

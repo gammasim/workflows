@@ -1,0 +1,35 @@
+%YAML 1.2
+---
+title: Schema for nsb_scaling_factor model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: nsb_scaling_factor
+description: |-
+  Common scaling of the NSB in all pixels of all telescopes against
+  reference setting.
+short_description: Global NSB scaling factor.
+data:
+  - type: double
+    units: dimensionless
+    default: 1.0
+    allowed_range:
+      min: 0.0
+      max: 10000.0
+instrument:
+  class: Site
+  type:
+    - Atmosphere
+  site:
+    - North
+    - South
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+source:
+  - Calibration
+simulation_software:
+  - name: sim_telarray

@@ -1,0 +1,45 @@
+%YAML 1.2
+---
+title: Schema for fadc_pedestal model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: fadc_pedestal
+description: (F)ADC pedestal value per time slice.
+data:
+  - type: double
+    description: |-
+      (F)ADC pedestal value per time slice
+      (for high-gain channel in case of dual-readout chain).
+    units: adc_counts
+    allowed_range:
+      min: 0.0
+  - type: double
+    description: |-
+      (F)ADC pedestal value per time slice
+      (for low-gain channel in case of dual-readout chain).
+    units: adc_counts
+    condition: num_gains==2
+    allowed_range:
+      min: 0.0
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateReadout
+    - ValidatePedestalEvents
+    - ValidateTelescopeSimulationModel
+source:
+  - Observation execution
+simulation_software:
+  - name: sim_telarray

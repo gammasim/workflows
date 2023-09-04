@@ -1,0 +1,35 @@
+%YAML 1.2
+---
+title: Schema for transit_time_compensate_error model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: transit_time_compensate_error
+description: |-
+  Additional error (r.m.s.) in how well the number of steps for
+  transit time compensation can be determined before the
+  compensation is applied.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: double
+    units: ns
+    allowed_range:
+      min: 0.0
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateCameraTimeResponse
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

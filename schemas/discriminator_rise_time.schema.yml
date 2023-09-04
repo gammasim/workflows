@@ -1,0 +1,41 @@
+%YAML 1.2
+---
+title: Schema for discriminator_rise_time model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: discriminator_rise_time
+description: |-
+  Rise time of the discriminator/comparator output. After the
+  discriminator/comparator logical output is set true, the output
+  signal linearly rises from 0 to 100\% within the given time period.
+short_description: |-
+  Rise time of the discriminator output. The output signal rises linearly
+  within time frame.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: double
+    units: ns
+    default: 1.0
+    condition: default_trigger==Majority
+    allowed_range:
+      min: 0.0
+      max: 100.0
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTriggerPerformance
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

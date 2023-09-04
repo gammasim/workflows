@@ -1,0 +1,76 @@
+%YAML 1.2
+---
+title: Schema for lightguide_efficiency_vs_wavelength model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: lightguide_efficiency_vs_wavelength
+developer_note: |-
+  The extra funnel efficiency table is interpreted such that
+  efficiency factors are not double-counted on top of that in
+  the angle-dependence table (normalized to yield no extra
+  correction for 400 nm wavelength at the expected average
+  incidence angle).
+  This is not interchangeable with the window filter transmission.
+  Part of sim_telarray camera_config_file (parameter PixType).
+description: Lightguide efficiency for on-axis photons vs wavelength.
+data:
+  - type: datatable
+    table_columns:
+      - name: wavelength
+        description: Wavelength.
+        required: true
+        units: nm
+        type: double
+        required_range:
+          min: 300.0
+          max: 700.0
+      - name: lightguide_efficiency
+        description: Average lightguide efficiency within angle range.
+        required: true
+        units: dimensionless
+        type: double
+        allowed_range:
+          min: 0.0
+          max: 1.0
+  - name: averaging_angle_min
+    description: |-
+      Minimum incident angle used for the calculation of
+      the lightguide efficiency.
+    type: double
+    units: deg
+    required: true
+    allowed_range:
+      min: 0.0
+      max: 90.0
+  - name: averaging_angle_max
+    description: |-
+      Maximum incident angle used for the calculation of
+      the lightguide efficiency.
+    type: double
+    units: deg
+    required: true
+    allowed_range:
+      min: 0.0
+      max: 90.0
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+activity:
+  setting:
+    - SetLightGuideEfficiency
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTelescopeEfficiency
+    - ValidateTelescopeSimulationModel
+source:
+  - Calibration
+simulation_software:
+  - name: sim_telarray

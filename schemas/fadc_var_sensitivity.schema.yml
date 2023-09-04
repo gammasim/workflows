@@ -1,0 +1,47 @@
+%YAML 1.2
+---
+title: Schema for fadc_var_sensitivity model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: fadc_var_sensitivity
+description: Relative variations in sensitivity (even for FADCs of the same channel).
+data:
+  - type: double
+    description: |-
+      Relative variations in sensitivity
+      (for high-gain channel in case of dual-readout chain).
+    units: dimensionless
+    allowed_range:
+      min: 0.0
+  - type: double
+    description: |-
+      Relative variations in sensitivity
+      (for low-gain channel in case of dual-readout chain).
+    condition: num_gains==2
+    units: dimensionless
+    allowed_range:
+      min: 0.0
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidatePedestalEvents
+    - ValidateReadout
+    - ValidateCameraChargeResponse
+    - ValidateCameraLinearity
+    - ValidateTelescopeSimulationModel
+source:
+  - Calibration
+simulation_software:
+  - name: sim_telarray

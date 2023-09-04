@@ -1,0 +1,34 @@
+%YAML 1.2
+---
+title: Schema for pm_gain_index model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: pm_gain_index
+description: |-
+  PMT gain g and voltage U are assumed to be related by
+  the PMT gain index p through $g \propto U^{p}$.
+  Used only for PMT timing.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+data:
+  - type: double
+    units: dimensionless
+    allowed_range:
+      min: 0.0
+      max: 15.0
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateCameraTimeResponse
+source:
+  - Calibration
+simulation_software:
+  - name: sim_telarray

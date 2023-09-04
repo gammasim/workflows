@@ -1,0 +1,39 @@
+%YAML 1.2
+---
+title: Schema for dual_mirror_hole_diameter model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: dual_mirror_hole_diameter
+description: |-
+  The diameter of any non-reflective part of the primary or
+  secondary mirror. For the secondary, this should not be a hole.
+  With a segments defined, it effectively clips the inner edge of
+  the segments
+data:
+  - name: primary_hole_diameter
+    description: Diameter of central hole in primary mirror.
+    type: double
+    units: cm
+    condition: mirror_class==2
+  - name: secondary_hole_diameter
+    description: Diameter of any non-reflective part of the secondary mirror.
+    type: double
+    units: cm
+    condition: mirror_class==2
+instrument:
+  class: Structure
+  type:
+    - SSTStructure
+    - SCTStructure
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTelescopeStructure
+source:
+  - Initial instrument setup
+simulation_software:
+  - name: sim_telarray

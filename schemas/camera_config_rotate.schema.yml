@@ -1,0 +1,35 @@
+%YAML 1.2
+---
+title: Schema for camera_config_rotate model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: camera_config_rotate
+developer_note: Part of sim_telarray camera_config_file (parameter Rotate).
+description: |-
+  Camera rotation angle, rotating the whole camera with all the pixels by
+  the given angle.
+short_description: Camera rotation angle.
+data:
+  - type: double
+    units: deg
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateCameraGeometry
+source:
+  - Initial instrument setup
+  - Calibration
+simulation_software:
+  - name: sim_telarray

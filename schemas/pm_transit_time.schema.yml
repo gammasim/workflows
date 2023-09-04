@@ -1,0 +1,61 @@
+%YAML 1.2
+---
+title: Schema for pm_transit_time model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: pm_transit_time
+description: Total transit time of the photodetector at the average voltage.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+data:
+  - name: pm_transit_time_at_average_voltage
+    type: double
+    description: Total transit time of the PMT at the average voltage.
+    units: ns
+    allowed_range:
+      min: 0.0
+  - name: pm_transit_time_to_first_dynode
+    type: double
+    description: |-
+      Fixed transit time between cathode and first dynode, in case of
+      the first dynode being stabilized. Use zero for a passive divider.
+    units: ns
+    default: 0.0
+    allowed_range:
+      min: 0.0
+  - name: fixed_voltage_first_dynode
+    type: double
+    description: |-
+      The fixed voltage (or fraction of total nominal voltage) applied to
+      a stabilized first dynode. Use zero for a passive divider.
+    units: V
+    default: 0.0
+    allowed_range:
+      min: 0.0
+    developer_note: "This parameter can describe in sim_telarray the fraction of total\n\
+      nominal voltage in case total nominal voltage is set to zero."
+  - name: total_nominal_voltage
+    type: double
+    default: 0.0
+    description: Total nominal voltage.
+    units: V
+    allowed_range:
+      min: 0.0
+    developer_note: "If zero (or one), the third value of the fixed voltage is assumed\
+      \ to\nrepresent the fraction of the total nominal voltage in sim_telarray."
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateCameraTimeResponse
+source:
+  - Calibration
+simulation_software:
+  - name: sim_telarray

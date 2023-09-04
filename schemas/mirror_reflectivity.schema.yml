@@ -1,0 +1,110 @@
+%YAML 1.2
+---
+title: Schema for mirror_reflectivity model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: mirror_reflectivity
+developer_note: |-
+  Note - describes both 2D and 3D tables
+  (2D in case there is no dependency on the photon incident angle)
+description: |-
+  Mirror reflectivity measured directly on the facet as function of
+  wavelength. For dual mirror telescopes without explicit reflectivity
+  table given for the secondary, this reflectivity given here is
+  applied twice.
+data:
+  - name: mirror_reflectivity
+    description: |-
+      Reflectivity table
+      (for primary mirror in case of dual-mirror telescopes).
+    required: true
+    type: datatable
+    table_columns:
+      - name: wavelength
+        description: Wavelength.
+        units: nm
+        type: double
+        required: true
+        column_type: independent
+      - name: incident_angle
+        description: Photon incident angle.
+        type: double
+        units: deg
+        required: false
+        column_type: independent
+      - name: reflectivity
+        description: Reflectivity.
+        type: double
+        units: dimensionless
+        allowed_range:
+          min: 0.0
+          max: 1.0
+        required: true
+        column_type: dependent
+      - name: reflectivity_1sigma
+        description: Uncertainty (1 sigma) on reflectivity.
+        type: double
+        units: dimensionless
+        allowed_range:
+          min: 0.0
+          max: 1.0
+        required: false
+        column_type: dependent
+  - name: mirror_secondary_reflectivity
+    description: Reflectivity table for secondary mirror.
+    required: false
+    condition: mirror_class==2
+    type: datatable
+    table_columns:
+      - name: wavelength
+        description: Wavelength.
+        units: nm
+        type: double
+        required: true
+        column_type: independent
+      - name: incident_angle
+        description: Photon incident angle.
+        type: double
+        units: deg
+        required: false
+        column_type: independent
+      - name: reflectivity
+        description: Reflectivity (secondary mirror).
+        units: dimensionless
+        allowed_range:
+          min: 0.0
+          max: 1.0
+        type: double
+        required: true
+        column_type: dependent
+      - name: reflectivity_1sigma
+        description: Uncertainty (1 sigma) on reflectivity (secondary mirror).
+        type: double
+        units: dimensionless
+        allowed_range:
+          min: 0.0
+          max: 1.0
+        required: false
+        column_type: dependent
+instrument:
+  class: Structure
+  type:
+    - LSTStructure
+    - MSTStructure
+    - SSTStructure
+    - SCTStructure
+activity:
+  setting:
+    - SetParameterFromExternal
+    - SetTelescopeEfficiency
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTelescopeEfficiency
+    - ValidateTriggerPerformance
+    - ValidateTelescopeSimulationModel
+source:
+  - Calibration
+simulation_software:
+  - name: sim_telarray

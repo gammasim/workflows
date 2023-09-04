@@ -1,0 +1,40 @@
+%YAML 1.2
+---
+title: Schema for teltrig_min_sigsum model parameter
+version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_version: 0.1.0
+name: teltrig_min_sigsum
+description: |-
+  Minimum signal sum at sector trigger over threshold.
+  Note that both the minimum time over threshold and the minimum signal
+  sum have to be satisfied before a trigger is obtained. Normally, either
+  of these values being non-zero should be sufficient.
+short_description: Minimum signal sum at sector trigger over threshold.
+instrument:
+  class: Camera
+  type:
+    - LSTCam
+    - FlashCam
+    - NectarCam
+    - SSTCam
+    - SCTCam
+data:
+  - type: double
+    units: mV * ns
+    default: 7.8
+    allowed_range:
+      min: 0.0
+      max: 1000.0
+    condition: default_trigger==Majority
+activity:
+  setting:
+    - SetParameterFromExternal
+  validation:
+    - ValidateParameterByExpert
+    - ValidateTriggerPerformance
+source:
+  - Observation execution
+simulation_software:
+  - name: sim_telarray
