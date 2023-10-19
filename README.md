@@ -77,21 +77,23 @@ Expected output:
 - metadata files describing each workflow step (yml format)
 - log files (stdout and stderr; ascii format)
 
-#### Workflow with database access
+#### Workflows with database access
 
 To run workflows which require access to the model database, use the following commands:
 
 ```bash
 cwltool --custom-net bridge \
-    --preserve-environment DB_API_PORT \
-    --preserve-environment DB_SERVER \
-    --preserve-environment DB_API_USER \
-    --preserve-environment DB_API_PW \
-    --preserve-environment DB_API_AUTHENTICATION_DATABASE  \
+    --preserve-environment SIMTOOLS_DB_API_PORT \
+    --preserve-environment SIMTOOLS_DB_SERVER \
+    --preserve-environment SIMTOOLS_DB_API_USER \
+    --preserve-environment SIMTOOLS_DB_API_PW \
+    --preserve-environment SIMTOOLS_DB_API_AUTHENTICATION_DATABASE  \
+    --preserve-environment SIMTOOLS_SIMTEL_PATH \
     SetMirrorPanelRandomReflection.cwl ../tests/resources/test_derive_mirror_panel_rnda.yml
 ```
 
-The environmental variables are used to configure the database connection (see [simtools](https://gammasim.github.io/simtools/getting_started.html)).
+The environmental variables are used to configure the database connection (see [simtools](https://gammasim.github.io/simtools/getting_started.html)) and the path pointing to sim_telarray.
+Note that these environmental variables need to be set in your shell before running the workflow.
 
 ## Implemented workflows available for testing
 
