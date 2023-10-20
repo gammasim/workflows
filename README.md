@@ -62,7 +62,9 @@ Tools are using the [simtools-prod:latest](https://github.com/gammasim/simtools/
 The following command line tool converts telescope coordinates from UTM to CORSIKA coordinates.
 
 ```bash
-cwltool DeriveArrayElementCoordinates.cwl ../tests/resources/test_derive_array_elements_coordinates.yml
+cwltool \
+    DeriveArrayElementCoordinates.cwl \
+    ../tests/resources/test_derive_array_elements_coordinates.yml
 ```
 
 The workflow steps executed are:
@@ -93,7 +95,7 @@ cwltool --custom-net bridge \
 ```
 
 The environmental variables are used to configure the database connection (see [simtools](https://gammasim.github.io/simtools/getting_started.html)) and the path pointing to sim_telarray.
-Note that these environmental variables need to be set in your shell before running the workflow.
+Note that these environmental variables need to be set in your shell before running the workflow (this might change in future, see issue #14).
 
 ## Implemented workflows available for testing
 
