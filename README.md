@@ -129,3 +129,7 @@ Following notes are unsorted, and possibly useful for the implementation of new 
 - use `--write-summary <summary file>` to write a json structure to file describing all inputs and outputs (allows e.g., to retrieve the file name for the model parameter file)
 - allow containers in tools to access network: use `cwltool --custom-net bridge...` and add `NetworkAccess: networkAccess: true` to the tool requirements.
 - set environmental variables (propagated into containers) with `cwltool --preserve-environment DB_API_PORT --preserve-environment DB_SERVER ...`
+
+## Acknowledgements
+
+This project is supported by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – project number 460248186 (PUNCH4NFDI).
