@@ -2,9 +2,9 @@
 ---
 title: Schema for peak_sensing model parameter
 version: 0.1.0
-base_schema: simpipe-schema
-base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
-base_schema_version: 0.1.0
+meta_schema: simpipe-schema
+meta_schema_url: https://raw.githubusercontent.com/gammasim/simtools/main/simtools/schemas/data.metaschema.yml
+meta_schema_version: 0.1.0
 name: peak_sensing
 description: |-
   Report sample with the largest signal in the range otherwise

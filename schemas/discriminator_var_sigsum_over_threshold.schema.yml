@@ -2,9 +2,9 @@
 ---
 title: Schema for discriminator_var_sigsum_over_threshold model parameter
 version: 0.1.0
-base_schema: simpipe-schema
-base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
-base_schema_version: 0.1.0
+meta_schema: simpipe-schema
+meta_schema_url: https://raw.githubusercontent.com/gammasim/simtools/main/simtools/schemas/data.metaschema.yml
+meta_schema_version: 0.1.0
 name: discriminator_var_sigsum_over_threshold
 developer_note: |-
   Intended as mV * ns, but if unit of
