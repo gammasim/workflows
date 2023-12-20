@@ -51,7 +51,7 @@ data:
         units: cm
         required: false
         type: double
-      - name: mirror_id
+      - name: mirror_panel_id
         description: Mirror identifier.
         type: uint
         units: dimensionless
