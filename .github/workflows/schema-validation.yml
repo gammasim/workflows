@@ -22,7 +22,7 @@ jobs:
       - name: Validate schema files
         run: |
           for file in $(ls schemas/*.schema.yml); do
-            simtools-validate-schema-files \
+            simtools-validate-file-using-schema \
             --file_name $file \
             --schema "https://raw.githubusercontent.com/gammasim/simtools/main/simtools/schemas/data.metaschema.yml"
           done

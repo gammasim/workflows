@@ -2,9 +2,9 @@
 ---
 title: Schema for focal_surface_parameters model parameter
 version: 0.1.0
-meta_schema: simpipe-schema
-meta_schema_url: https://raw.githubusercontent.com/gammasim/simtools/main/simtools/schemas/data.metaschema.yml
-meta_schema_version: 0.1.0
+base_schema: simpipe-schema
+base_schema_url: https://raw.githubusercontent.com/gammasim/simtools/main/simtools/schemas/data.metaschema.yml
+base_schema_version: 0.1.0
 name: focal_surface_parameters
 description: |-
   Defines the position of the focal surface along the optical axis and
