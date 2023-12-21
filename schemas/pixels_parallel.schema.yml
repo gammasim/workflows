@@ -3,7 +3,7 @@
 title: Schema for pixels_parallel model parameter
 version: 0.1.0
 base_schema: simpipe-schema
-base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
+base_schema_url: https://raw.githubusercontent.com/gammasim/simtools/main/simtools/schemas/data.metaschema.yml
 base_schema_version: 0.1.0
 name: pixels_parallel
 description: |-
