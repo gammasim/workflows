@@ -4,8 +4,8 @@ class: Workflow
 
 label: DeriveArrayElementCoordinates
 doc: |-
-  Derive array element coordinates and archive
-  data generated in derivation process.
+  Derive array element coordinates in the
+  simulation pipeline coordinate system.
 
 inputs:
 
