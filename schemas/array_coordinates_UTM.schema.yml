@@ -2,9 +2,9 @@
 ---
 title: Schema for array_coordinates_utm input data
 version: 0.1.0
-base_schema: simpipe-schema
-base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
-base_schema_version: 0.1.0
+meta_schema: simpipe-schema
+meta_schema_url: https://raw.githubusercontent.com/gammasim/simtools/main/simtools/schemas/data.metaschema.yml
+meta_schema_version: 0.1.0
 name: array_coordinates_utm
 description: |-
   Array elements (e.g., telescope positions) in UTM coordinates.
@@ -39,7 +39,7 @@ data:
         units: m
         input_processing:
           - allow_nan
-      - name: alt
+      - name: altitude
         description: |-
           Altitude of the array element.
         required: true

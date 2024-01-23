@@ -2,9 +2,9 @@
 ---
 title: Schema for mirror_list model parameter
 version: 0.1.0
-base_schema: simpipe-schema
-base_schema_url: https://github.com/gammasim/workflows/schema/jsonschema.yml
-base_schema_version: 0.1.0
+meta_schema: simpipe-schema
+meta_schema_url: https://raw.githubusercontent.com/gammasim/simtools/main/simtools/schemas/data.metaschema.yml
+meta_schema_version: 0.1.0
 name: mirror_list
 description: List of mirror positions, diameters, focal lengths, and shape codes.
 data:
@@ -51,7 +51,7 @@ data:
         units: cm
         required: false
         type: double
-      - name: mirror_id
+      - name: mirror_panel_id
         description: Mirror identifier.
         type: uint
         units: dimensionless
