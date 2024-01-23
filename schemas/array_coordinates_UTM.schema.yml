@@ -39,7 +39,7 @@ data:
         units: m
         input_processing:
           - allow_nan
-      - name: alt
+      - name: altitude
         description: |-
           Altitude of the array element.
         required: true
