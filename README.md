@@ -1,5 +1,9 @@
 # Workflows for simtools
 
+| :point_up: NOTE          |
+|:---------------------------|
+| Model parameter schema files for moved to the CTAO gitlab, see [this repository](https://gitlab.cta-observatory.org/cta-science/simulations/simulation-model/model_parameters).
+
 ## Introduction
 
 CWL implementations of workflows for the CTA Simulation Pipeline.
